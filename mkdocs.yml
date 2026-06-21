@@ -4,24 +4,40 @@ site_description: >-
   annotated plates, family-of-4 recipes, batch-cooking plans, grocery lists,
   and a keto chapter. Built for public good.
 site_url: https://lgtkgtv.github.io/protein-plate-v2/
+site_author: ProteinPlate contributors
 repo_url: https://github.com/lgtkgtv/protein-plate-v2
 repo_name: lgtkgtv/protein-plate-v2
+copyright: >-
+  Content licensed CC BY 4.0 · Code licensed MIT. Educational use only — not medical advice.
 
 theme:
   name: material
+  icon:
+    logo: material/silverware-fork-knife
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: green
+      accent: deep orange
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
-    - scheme: slate
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: green
+      accent: deep orange
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
   features:
     - navigation.instant
+    - navigation.tracking
     - navigation.top
+    - navigation.footer
     - content.code.copy
+    - toc.follow
+    - search.suggest
+    - search.highlight
 
 plugins:
   - search
@@ -31,11 +47,15 @@ plugins:
 
 markdown_extensions:
   - admonition
+  - pymdownx.details
+  - pymdownx.superfences
   - tables
   - attr_list
+  - md_in_html
   - pymdownx.tasklist:        # renders the grocery "- [ ]" as real checkboxes
       custom_checkbox: true
-  - pymdownx.superfences
+  - toc:
+      permalink: true
 
 nav:
   - Home: index.md
@@ -46,3 +66,8 @@ nav:
   - Grocery List: grocery-list.md                # generated
   - Keto Chapter: keto.md
   - About & Health Note: about.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/lgtkgtv/protein-plate-v2
