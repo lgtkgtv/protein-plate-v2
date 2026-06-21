@@ -1,0 +1,64 @@
+# Weekly meal plan for a family of 4.
+#   `days`    -> what's on the plate each day (drives the meal-plan page)
+#   `batches` -> how many family-of-4 batches to actually cook this week
+#                (drives the grocery list). Batch items are cooked once and
+#                eaten across several days, so this is NOT just a count of `days`.
+servings: 4
+
+days:
+  - day: Monday
+    protein: chicken-tikka-tawa
+    cooked_veg: sauteed-mixed-vegetables
+    salad: kachumber
+    extras: [buttermilk-chaas, toasted-nuts-seeds]
+  - day: Tuesday
+    protein: paneer-bhurji
+    cooked_veg: sauteed-greens-bean-sabzi
+    salad: big-leafy-salad
+    extras: [green-chutney, toasted-nuts-seeds]
+  - day: Wednesday
+    protein: egg-bhurji
+    cooked_veg: green-soup
+    salad: curd-vegetable-raita
+    extras: [toasted-nuts-seeds]
+  - day: Thursday
+    protein: chana-masala
+    cooked_veg: sauteed-mixed-vegetables
+    salad: kachumber
+    extras: [buttermilk-chaas, toasted-nuts-seeds]
+  - day: Friday
+    protein: grilled-paneer-tawa
+    cooked_veg: sauteed-mixed-vegetables
+    salad: big-leafy-salad
+    extras: [hummus, toasted-nuts-seeds]
+  - day: Saturday
+    protein: chicken-veg-stirfry
+    cooked_veg: green-soup
+    salad: curd-vegetable-raita
+    extras: [buttermilk-chaas, toasted-nuts-seeds]
+  - day: Sunday
+    protein: moong-sprouts-usal
+    cooked_veg: sauteed-greens-bean-sabzi
+    salad: big-leafy-salad
+    extras: [besan-moong-cheela, green-chutney, toasted-nuts-seeds]
+
+batches:
+  chicken-tikka-tawa: 1
+  paneer-bhurji: 1
+  egg-bhurji: 1
+  boiled-eggs: 1
+  chana-masala: 1
+  grilled-paneer-tawa: 1
+  chicken-veg-stirfry: 1
+  moong-sprouts-usal: 1
+  besan-moong-cheela: 2
+  sauteed-mixed-vegetables: 3
+  sauteed-greens-bean-sabzi: 2
+  green-soup: 2
+  kachumber: 4
+  big-leafy-salad: 3
+  curd-vegetable-raita: 3
+  buttermilk-chaas: 4
+  hummus: 1
+  green-chutney: 1
+  toasted-nuts-seeds: 1

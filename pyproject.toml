@@ -1,0 +1,23 @@
+[project]
+name = "proteinplate"
+version = "0.1.0"
+description = "Data-driven guide to high-protein, lower-calorie Indian home meals."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "mkdocs-material>=9.5",
+    # Pinned < 0.6: mkdocs-gen-files 0.6+ adds a hard dependency on `properdocs`,
+    # which injects a promotional warning into the build. 0.5.x depends only on
+    # mkdocs and provides the same page-generation API we use. See WIRING.md.
+    "mkdocs-gen-files>=0.5,<0.6",
+    "pyyaml>=6.0.1",
+    "jsonschema>=4.18",
+]
+
+# This is an app/site, not a distributed library: don't build/install the
+# `proteinplate` package itself. The scripts and the mkdocs hook import it from
+# the working tree (they add the repo root to sys.path), so `uv sync` only needs
+# to provision the dependencies above.
+[tool.uv]
+package = false

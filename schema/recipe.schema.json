@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lgtkgtv.github.io/protein-plate-v2/schema/recipe.schema.json",
+  "title": "ProteinPlate Recipe",
+  "description": "A single recipe in the ProteinPlate data layer. One file per recipe under data/recipes/.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "category", "base_servings", "ingredients", "steps"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Stable slug, must match the filename (without .yaml)."
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "category": {
+      "type": "string",
+      "enum": ["protein-anchor", "binder", "side", "salad", "condiment"]
+    },
+    "protein_family": {
+      "type": "string",
+      "enum": ["sprouts-legumes", "paneer", "eggs", "chicken", "binder"],
+      "description": "Only meaningful for protein anchors / binders; omit otherwise."
+    },
+    "base_servings": { "type": "integer", "minimum": 1 },
+    "batch": { "type": "boolean" },
+    "serving_note": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "time": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "prep_min": { "type": "integer", "minimum": 0 },
+        "marinate_min": { "type": "integer", "minimum": 0 },
+        "cook_min": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "diet": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "vegetarian": { "type": "boolean" },
+        "vegan": { "type": "boolean" },
+        "egg": { "type": "boolean" },
+        "gluten_free": { "type": "boolean" },
+        "no_cook": { "type": "boolean" }
+      }
+    },
+    "ingredients": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["item", "qty", "unit"],
+        "properties": {
+          "item": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+            "description": "Must resolve to an id in data/ingredients.yaml."
+          },
+          "qty": {
+            "type": ["number", "null"],
+            "description": "null means 'to taste' / 'as needed'."
+          },
+          "unit": {
+            "type": "string",
+            "enum": ["g", "kg", "ml", "l", "tsp", "tbsp", "cup", "piece",
+                     "clove", "sprig", "bunch", "handful", "head", "pinch",
+                     "to_taste", "to_cover", "as_needed"]
+          },
+          "prep": { "type": "string" },
+          "scale": { "type": "boolean", "description": "Default true. false = fixed amount, never scaled." },
+          "optional": { "type": "boolean" }
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "storage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fridge_days": { "type": ["integer", "null"], "minimum": 0 },
+        "freezer_days": { "type": ["integer", "null"], "minimum": 0 },
+        "note": { "type": ["string", "null"] }
+      }
+    },
+    "media": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "video": { "type": "string" },
+        "image": { "type": "string" }
+      }
+    },
+    "tips": { "type": "array", "items": { "type": "string" } },
+    "macros_per_serving": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kcal": { "type": ["number", "null"], "minimum": 0 },
+        "protein_g": { "type": ["number", "null"], "minimum": 0 },
+        "carbs_g": { "type": ["number", "null"], "minimum": 0 },
+        "fat_g": { "type": ["number", "null"], "minimum": 0 },
+        "source": { "type": ["string", "null"] },
+        "verified": { "type": "boolean" }
+      }
+    },
+    "source_note": { "type": "string" }
+  }
+}

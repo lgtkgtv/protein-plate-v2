@@ -1,0 +1,85 @@
+id: grilled-paneer-tawa
+name: Grilled paneer on tawa
+category: protein-anchor
+protein_family: paneer
+base_servings: 4
+tags:
+- high-protein
+- vegetarian
+- gluten-free
+time:
+  prep_min: 10
+  marinate_min: 30
+  cook_min: 12
+diet:
+  vegetarian: true
+  vegan: false
+  egg: false
+  gluten_free: true
+  no_cook: false
+ingredients:
+- item: paneer
+  qty: 500
+  unit: g
+  prep: cubed or sliced
+- item: curd
+  qty: 0.5
+  unit: cup
+  prep: thick
+- item: red-chilli-powder
+  qty: 1
+  unit: tsp
+  scale: false
+- item: turmeric
+  qty: 0.5
+  unit: tsp
+  scale: false
+- item: garam-masala
+  qty: 0.5
+  unit: tsp
+  scale: false
+- item: chaat-masala
+  qty: 0.5
+  unit: tsp
+  scale: false
+- item: kasuri-methi
+  qty: 0.5
+  unit: tsp
+  scale: false
+- item: besan
+  qty: 2
+  unit: tsp
+  prep: roasted
+  scale: false
+- item: lemon
+  qty: 1
+  unit: tbsp
+- item: ginger-garlic-paste
+  qty: 1
+  unit: tsp
+- item: oil
+  qty: 1
+  unit: tsp
+- item: salt
+  qty: null
+  unit: to_taste
+  scale: false
+steps:
+- Whisk the marinade; coat paneer; rest 30 min (no longer — acid makes paneer rubbery).
+- Sear on a medium-high, lightly oiled tawa 3-4 min per side until charred. Don't
+  move it constantly.
+storage:
+  fridge_days: null
+  freezer_days: null
+  note: Cook fresh for best texture.
+media:
+  video: https://www.youtube.com/watch?v=BwIJHI4KdIE
+tips:
+- Sear marinated capsicum and onion alongside.
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

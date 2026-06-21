@@ -1,0 +1,49 @@
+id: toasted-nuts-seeds
+name: Toasted nuts & seeds
+category: condiment
+base_servings: 30
+batch: true
+serving_note: ~25 g per person.
+tags:
+- vegetarian
+- vegan
+- gluten-free
+- batch-friendly
+time:
+  prep_min: 2
+  cook_min: 8
+diet:
+  vegetarian: true
+  vegan: true
+  egg: false
+  gluten_free: true
+  no_cook: false
+ingredients:
+- item: almonds
+  qty: 250
+  unit: g
+- item: walnuts
+  qty: 250
+  unit: g
+- item: pumpkin-seeds
+  qty: 200
+  unit: g
+- item: sunflower-seeds
+  qty: 150
+  unit: g
+steps:
+- Dry-toast nuts and seeds in batches until fragrant; cool fully; store in a jar.
+- Portion ~25 g per person at serving time.
+storage:
+  fridge_days: null
+  freezer_days: null
+  note: Airtight jar, keeps for weeks.
+tips:
+- Pre-portion so you don't overshoot calories.
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

@@ -1,0 +1,62 @@
+id: green-soup
+name: Green soup
+category: side
+base_servings: 4
+tags:
+- vegetarian
+- gluten-free
+- low-cal
+- batch-friendly
+time:
+  prep_min: 8
+  cook_min: 12
+diet:
+  vegetarian: true
+  vegan: false
+  egg: false
+  gluten_free: true
+  no_cook: false
+ingredients:
+- item: bottle-gourd
+  qty: 1
+  unit: piece
+  prep: chopped
+- item: onion
+  qty: 1
+  unit: piece
+  prep: chopped
+- item: garlic
+  qty: 2
+  unit: clove
+- item: black-pepper
+  qty: null
+  unit: to_taste
+  scale: false
+- item: salt
+  qty: null
+  unit: to_taste
+  scale: false
+- item: curd
+  qty: 1
+  unit: tbsp
+  optional: true
+- item: water
+  qty: 3
+  unit: cup
+  scale: false
+steps:
+- Boil chopped lauki (or spinach/broccoli) with onion + garlic till soft (~10 min).
+- Blend, season with pepper and salt, finish with a spoon of curd or milk.
+storage:
+  fridge_days: 3
+  freezer_days: 30
+  note: null
+tips:
+- Make a big batch — it freezes well.
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

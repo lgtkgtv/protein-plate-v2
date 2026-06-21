@@ -1,0 +1,64 @@
+id: sauteed-greens-bean-sabzi
+name: Sauteed greens / bean sabzi
+category: side
+base_servings: 4
+tags:
+- vegetarian
+- vegan
+- gluten-free
+- low-cal
+time:
+  prep_min: 8
+  cook_min: 10
+diet:
+  vegetarian: true
+  vegan: true
+  egg: false
+  gluten_free: true
+  no_cook: false
+ingredients:
+- item: spinach
+  qty: 250
+  unit: g
+  prep: chopped
+- item: garlic
+  qty: 2
+  unit: clove
+  prep: chopped
+- item: red-chilli-powder
+  qty: 0.5
+  unit: tsp
+  scale: false
+- item: mustard-seeds
+  qty: 0.5
+  unit: tsp
+  scale: false
+  optional: true
+- item: cumin-seeds
+  qty: 0.5
+  unit: tsp
+  scale: false
+  optional: true
+- item: oil
+  qty: 1
+  unit: tbsp
+- item: salt
+  qty: null
+  unit: to_taste
+  scale: false
+steps:
+- 'Greens version: garlic + spinach/methi wilted 2-3 min with salt and chilli.'
+- 'Bean version: beans/capsicum with mustard-cumin tempering, 6-8 min covered.'
+storage:
+  fridge_days: 2
+  freezer_days: null
+  note: null
+tips:
+- Swap spinach for methi, green beans or capsicum using the same method.
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

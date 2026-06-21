@@ -1,0 +1,65 @@
+id: sauteed-mixed-vegetables
+name: Sauteed mixed vegetables
+category: side
+base_servings: 4
+tags:
+- vegetarian
+- vegan
+- gluten-free
+- low-cal
+time:
+  prep_min: 8
+  cook_min: 10
+diet:
+  vegetarian: true
+  vegan: true
+  egg: false
+  gluten_free: true
+  no_cook: false
+ingredients:
+- item: broccoli
+  qty: 200
+  unit: g
+  prep: florets
+- item: capsicum
+  qty: 1
+  unit: piece
+  prep: sliced
+- item: mushroom
+  qty: 150
+  unit: g
+  prep: sliced
+- item: onion
+  qty: 1
+  unit: piece
+  prep: sliced
+- item: garlic
+  qty: 2
+  unit: clove
+  prep: chopped
+- item: mixed-seeds
+  qty: 1
+  unit: tbsp
+- item: oil
+  qty: 1
+  unit: tbsp
+- item: salt
+  qty: null
+  unit: to_taste
+  scale: false
+steps:
+- 'Hot pan: garlic + onion 1 min -> broccoli + capsicum 3-4 min -> mushroom 2 min.'
+- Season; finish with mixed seeds. Keep it crisp-tender.
+storage:
+  fridge_days: 2
+  freezer_days: null
+  note: null
+media:
+  image: assets/images/06-grilled-chicken-sauteed-veg.jpeg
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

@@ -1,0 +1,81 @@
+id: besan-moong-cheela
+name: Besan / moong cheela
+category: binder
+protein_family: binder
+base_servings: 4
+tags:
+- high-protein
+- vegetarian
+- gluten-free
+time:
+  prep_min: 10
+  cook_min: 20
+diet:
+  vegetarian: true
+  vegan: true
+  egg: false
+  gluten_free: true
+  no_cook: false
+ingredients:
+- item: besan
+  qty: 2
+  unit: cup
+- item: onion
+  qty: 1
+  unit: piece
+  prep: finely chopped
+- item: tomato
+  qty: 1
+  unit: piece
+  prep: finely chopped
+- item: capsicum
+  qty: 0.5
+  unit: piece
+  prep: finely chopped
+- item: coriander-fresh
+  qty: 1
+  unit: handful
+  prep: chopped
+- item: green-chilli
+  qty: 1
+  unit: piece
+  prep: chopped
+- item: ajwain
+  qty: 0.5
+  unit: tsp
+  scale: false
+- item: turmeric
+  qty: 0.25
+  unit: tsp
+  scale: false
+- item: salt
+  qty: null
+  unit: to_taste
+  scale: false
+- item: oil
+  qty: 2
+  unit: tsp
+- item: water
+  qty: null
+  unit: as_needed
+  scale: false
+steps:
+- Mix besan, vegetables and spices with water to a pourable batter; rest 10 min.
+- On a hot tawa pour a ladle, spread thin, drizzle oil, flip when edges lift.
+- Serve with green chutney.
+storage:
+  fridge_days: null
+  freezer_days: null
+  note: Cook fresh.
+media:
+  video: https://www.youtube.com/watch?v=8qUJOvPkpl8
+tips:
+- Add 2-3 tbsp sattu or crumbled paneer to push protein higher.
+- 'Alternative base: 1.5 cups soaked-and-ground moong dal instead of besan.'
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

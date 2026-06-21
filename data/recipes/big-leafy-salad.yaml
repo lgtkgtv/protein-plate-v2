@@ -1,0 +1,69 @@
+id: big-leafy-salad
+name: Big leafy salad
+category: salad
+base_servings: 4
+tags:
+- vegetarian
+- vegan
+- gluten-free
+- no-cook
+- low-cal
+time:
+  prep_min: 10
+diet:
+  vegetarian: true
+  vegan: true
+  egg: false
+  gluten_free: true
+  no_cook: true
+ingredients:
+- item: lettuce
+  qty: 1
+  unit: head
+  prep: torn
+- item: cabbage
+  qty: 100
+  unit: g
+  prep: shredded
+- item: spinach
+  qty: 1
+  unit: handful
+- item: broccoli
+  qty: 100
+  unit: g
+  prep: small florets
+- item: capsicum
+  qty: 1
+  unit: piece
+  prep: sliced
+- item: cherry-tomato
+  qty: 100
+  unit: g
+- item: mixed-seeds
+  qty: 1
+  unit: tbsp
+- item: nuts-mixed
+  qty: 1
+  unit: tbsp
+- item: lemon
+  qty: 0.5
+  unit: piece
+- item: olive-oil
+  qty: 1
+  unit: tbsp
+steps:
+- Toss leaves and vegetables; top with seeds and nuts; dress with lemon + olive oil.
+storage:
+  fridge_days: null
+  freezer_days: null
+  note: Dress just before eating.
+tips:
+- Store washed-and-dried greens with a paper towel in an airtight box; moisture is
+  what makes salad slimy.
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

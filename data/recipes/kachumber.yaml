@@ -1,0 +1,58 @@
+id: kachumber
+name: Kachumber salad
+category: salad
+base_servings: 4
+tags:
+- vegetarian
+- vegan
+- gluten-free
+- no-cook
+- low-cal
+time:
+  prep_min: 8
+diet:
+  vegetarian: true
+  vegan: true
+  egg: false
+  gluten_free: true
+  no_cook: true
+ingredients:
+- item: tomato
+  qty: 1
+  unit: piece
+  prep: diced
+- item: cucumber
+  qty: 1
+  unit: piece
+  prep: diced
+- item: onion
+  qty: 1
+  unit: piece
+  prep: diced
+- item: coriander-fresh
+  qty: 1
+  unit: tbsp
+  prep: chopped
+- item: lemon
+  qty: 0.5
+  unit: piece
+- item: chaat-masala
+  qty: 0.5
+  unit: tsp
+  scale: false
+steps:
+- Combine equal tomato, cucumber and onion with coriander, lemon and chaat masala.
+- Dress just before eating.
+storage:
+  fridge_days: null
+  freezer_days: null
+  note: Eat fresh.
+tips:
+- Salt/dress last — salt pulls out water and makes it soggy.
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

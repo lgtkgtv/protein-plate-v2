@@ -1,0 +1,79 @@
+id: chicken-veg-stirfry
+name: Chicken-vegetable stir-fry
+category: protein-anchor
+protein_family: chicken
+base_servings: 4
+tags:
+- high-protein
+- gluten-free
+time:
+  prep_min: 15
+  cook_min: 15
+diet:
+  vegetarian: false
+  vegan: false
+  egg: false
+  gluten_free: true
+  no_cook: false
+ingredients:
+- item: boneless-chicken
+  qty: 700
+  unit: g
+  prep: cubed
+- item: broccoli
+  qty: 200
+  unit: g
+  prep: florets
+- item: capsicum
+  qty: 1
+  unit: piece
+  prep: sliced
+- item: cabbage
+  qty: 100
+  unit: g
+  prep: shredded
+- item: onion
+  qty: 1
+  unit: piece
+  prep: sliced
+- item: cucumber
+  qty: 1
+  unit: piece
+  prep: sliced
+- item: ginger-garlic-paste
+  qty: 1
+  unit: tbsp
+- item: black-pepper
+  qty: 1
+  unit: tsp
+  scale: false
+- item: chilli-flakes
+  qty: 1
+  unit: tsp
+  scale: false
+- item: oil
+  qty: 1
+  unit: tbsp
+- item: salt
+  qty: null
+  unit: to_taste
+  scale: false
+steps:
+- Sear chicken first till golden, remove.
+- Stir-fry hard veg on high 3-4 min, then quick-cooking veg.
+- Return chicken; toss with pepper, chilli flakes and salt.
+storage:
+  fridge_days: 3
+  freezer_days: null
+  note: null
+media:
+  image: assets/images/05-chicken-veg-stirfry.jpeg
+tips:
+- High heat + don't crowd the pan = sear, not steam.
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

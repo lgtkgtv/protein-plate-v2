@@ -1,0 +1,50 @@
+id: green-chutney
+name: Green chutney
+category: condiment
+base_servings: 8
+tags:
+- vegetarian
+- vegan
+- gluten-free
+- batch-friendly
+time:
+  prep_min: 8
+diet:
+  vegetarian: true
+  vegan: true
+  egg: false
+  gluten_free: true
+  no_cook: true
+ingredients:
+- item: coriander-fresh
+  qty: 1
+  unit: cup
+- item: mint
+  qty: 0.5
+  unit: cup
+- item: green-chilli
+  qty: 1
+  unit: piece
+- item: ginger
+  qty: 1
+  unit: tsp
+- item: lemon
+  qty: 0.5
+  unit: piece
+- item: salt
+  qty: null
+  unit: to_taste
+  scale: false
+steps:
+- Blend coriander + mint + green chilli + ginger + lemon + salt to a smooth chutney.
+storage:
+  fridge_days: 4
+  freezer_days: 30
+  note: Freezes well in ice-cube trays.
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

@@ -1,0 +1,668 @@
+onion:
+  display: Onion
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+tomato:
+  display: Tomato
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+cherry-tomato:
+  display: Cherry tomato
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+green-chilli:
+  display: Green chilli
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+capsicum:
+  display: Bell pepper / capsicum
+  grocery_category: produce
+  aliases:
+  - bell pepper
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+broccoli:
+  display: Broccoli
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+mushroom:
+  display: Mushroom
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+cabbage:
+  display: Cabbage
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+cucumber:
+  display: Cucumber
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+carrot:
+  display: Carrot
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+spinach:
+  display: Spinach
+  grocery_category: produce
+  aliases:
+  - palak
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+methi:
+  display: Fenugreek greens (methi)
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+lettuce:
+  display: Lettuce
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+green-beans:
+  display: Green beans
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+bottle-gourd:
+  display: Bottle gourd (lauki)
+  grocery_category: produce
+  aliases:
+  - lauki
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+avocado:
+  display: Avocado
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+lemon:
+  display: Lemon / lime
+  grocery_category: produce
+  aliases:
+  - lime
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+garlic:
+  display: Garlic
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+ginger:
+  display: Ginger
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+ginger-garlic-paste:
+  display: Ginger-garlic paste
+  grocery_category: produce
+  purchase_note: Buy a jar, or blend fresh ginger + garlic.
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+coriander-fresh:
+  display: Coriander (fresh)
+  grocery_category: produce
+  aliases:
+  - cilantro
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+mint:
+  display: Mint (fresh)
+  grocery_category: produce
+  aliases:
+  - pudina
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+curry-leaves:
+  display: Curry leaves
+  grocery_category: produce
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+paneer:
+  display: Paneer
+  grocery_category: protein-dairy
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+eggs:
+  display: Eggs
+  grocery_category: protein-dairy
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+boneless-chicken:
+  display: Boneless chicken
+  grocery_category: protein-dairy
+  aliases:
+  - chicken breast
+  - chicken thigh
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+curd:
+  display: Curd / yogurt
+  grocery_category: protein-dairy
+  aliases:
+  - yogurt
+  - dahi
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+milk:
+  display: Milk
+  grocery_category: protein-dairy
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+moong-sprouts:
+  display: Moong sprouts
+  grocery_category: protein-dairy
+  purchase_as: green-moong-dry
+  purchase_note: Buy dry green moong and sprout at home — sprouting ~triples the volume.
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+boiled-chickpeas:
+  display: Boiled chickpeas / chana
+  grocery_category: protein-dairy
+  purchase_as: chickpea-dry
+  purchase_note: Buy dry chana (cheapest) or canned chickpeas.
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+almonds:
+  display: Almonds
+  grocery_category: nuts-seeds
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+walnuts:
+  display: Walnuts
+  grocery_category: nuts-seeds
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+cashews:
+  display: Cashews
+  grocery_category: nuts-seeds
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+pumpkin-seeds:
+  display: Pumpkin seeds
+  grocery_category: nuts-seeds
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+sunflower-seeds:
+  display: Sunflower seeds
+  grocery_category: nuts-seeds
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+flax-seeds:
+  display: Flax seeds
+  grocery_category: nuts-seeds
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+mixed-seeds:
+  display: Mixed seeds
+  grocery_category: nuts-seeds
+  purchase_note: Pumpkin + sunflower + flax mix.
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+nuts-mixed:
+  display: Mixed nuts
+  grocery_category: nuts-seeds
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+besan:
+  display: Besan (gram flour)
+  grocery_category: flour
+  aliases:
+  - gram flour
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+moong-dal:
+  display: Moong dal
+  grocery_category: flour
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+oats:
+  display: Oats / daliya
+  grocery_category: flour
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+sattu:
+  display: Sattu (roasted gram flour)
+  grocery_category: flour
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+oil:
+  display: Cooking oil (groundnut/mustard)
+  grocery_category: fat-oil
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+olive-oil:
+  display: Olive oil
+  grocery_category: fat-oil
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+ghee:
+  display: Ghee
+  grocery_category: fat-oil
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+mustard-seeds:
+  display: Mustard seeds
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+cumin-seeds:
+  display: Cumin seeds (jeera)
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+cumin-powder:
+  display: Cumin powder
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+turmeric:
+  display: Turmeric
+  grocery_category: pantry-spice
+  aliases:
+  - haldi
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+red-chilli-powder:
+  display: Red chilli powder
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+kashmiri-chilli-powder:
+  display: Kashmiri chilli powder
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+coriander-powder:
+  display: Coriander powder
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+garam-masala:
+  display: Garam masala
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+chaat-masala:
+  display: Chaat masala
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+amchur:
+  display: Amchur (dry mango powder)
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+kasuri-methi:
+  display: Kasuri methi (dried fenugreek)
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+ajwain:
+  display: Ajwain (carom seeds)
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+black-pepper:
+  display: Black pepper
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+chilli-flakes:
+  display: Chilli flakes
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+salt:
+  display: Salt
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+hing:
+  display: Hing (asafoetida)
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+bay-leaf:
+  display: Bay leaf
+  grocery_category: pantry-spice
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+tahini:
+  display: Tahini (sesame paste)
+  grocery_category: condiment-other
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false
+water:
+  display: Water
+  grocery_category: skip
+  macros_per_100g:
+    kcal: null
+    protein_g: null
+    carbs_g: null
+    fat_g: null
+    source: null
+    verified: false

@@ -1,0 +1,51 @@
+id: buttermilk-chaas
+name: Buttermilk (chaas)
+category: condiment
+base_servings: 4
+tags:
+- vegetarian
+- gluten-free
+- no-cook
+time:
+  prep_min: 4
+diet:
+  vegetarian: true
+  vegan: false
+  egg: false
+  gluten_free: true
+  no_cook: true
+ingredients:
+- item: curd
+  qty: 0.5
+  unit: cup
+- item: water
+  qty: 1.5
+  unit: cup
+  scale: false
+- item: cumin-powder
+  qty: 0.25
+  unit: tsp
+  prep: roasted
+  scale: false
+- item: salt
+  qty: null
+  unit: to_taste
+  scale: false
+- item: coriander-fresh
+  qty: 1
+  unit: tbsp
+  prep: chopped
+  optional: true
+steps:
+- Whisk curd + water + roasted cumin + salt + coriander until frothy.
+storage:
+  fridge_days: 1
+  freezer_days: null
+  note: null
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

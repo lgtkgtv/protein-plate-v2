@@ -1,0 +1,67 @@
+id: vegetable-omelette
+name: Vegetable omelette
+category: protein-anchor
+protein_family: eggs
+base_servings: 4
+tags:
+- high-protein
+- gluten-free
+- egg
+time:
+  prep_min: 8
+  cook_min: 8
+diet:
+  vegetarian: false
+  vegan: false
+  egg: true
+  gluten_free: true
+  no_cook: false
+ingredients:
+- item: eggs
+  qty: 8
+  unit: piece
+- item: onion
+  qty: 1
+  unit: piece
+  prep: chopped
+- item: tomato
+  qty: 1
+  unit: piece
+  prep: chopped
+- item: capsicum
+  qty: 1
+  unit: piece
+  prep: chopped
+- item: spinach
+  qty: 1
+  unit: handful
+  prep: chopped
+- item: green-chilli
+  qty: 1
+  unit: piece
+  prep: chopped
+- item: turmeric
+  qty: 0.25
+  unit: tsp
+  scale: false
+- item: salt
+  qty: null
+  unit: to_taste
+  scale: false
+- item: ghee
+  qty: 0.5
+  unit: tsp
+steps:
+- Beat eggs with chopped vegetables, chilli, salt and turmeric.
+- Cook on a little ghee, flip once.
+storage:
+  fridge_days: null
+  freezer_days: null
+  note: Cook fresh.
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

@@ -1,0 +1,82 @@
+id: paneer-bhurji
+name: Paneer bhurji
+category: protein-anchor
+protein_family: paneer
+base_servings: 4
+tags:
+- high-protein
+- vegetarian
+- gluten-free
+time:
+  prep_min: 10
+  cook_min: 12
+diet:
+  vegetarian: true
+  vegan: false
+  egg: false
+  gluten_free: true
+  no_cook: false
+ingredients:
+- item: paneer
+  qty: 500
+  unit: g
+  prep: crumbled
+- item: onion
+  qty: 2
+  unit: piece
+  prep: chopped
+- item: tomato
+  qty: 2
+  unit: piece
+  prep: chopped
+- item: capsicum
+  qty: 1
+  unit: piece
+  prep: chopped
+- item: green-chilli
+  qty: 1
+  unit: piece
+  prep: chopped
+- item: ginger-garlic-paste
+  qty: 1
+  unit: tsp
+- item: turmeric
+  qty: 0.5
+  unit: tsp
+  scale: false
+- item: red-chilli-powder
+  qty: 1
+  unit: tsp
+  scale: false
+- item: garam-masala
+  qty: 0.5
+  unit: tsp
+  scale: false
+- item: oil
+  qty: 1
+  unit: tbsp
+- item: salt
+  qty: null
+  unit: to_taste
+  scale: false
+- item: coriander-fresh
+  qty: 2
+  unit: tbsp
+  prep: chopped
+  optional: true
+steps:
+- Saute onion -> ginger-garlic -> capsicum -> tomato + spices till soft.
+- Add crumbled paneer, toss 3-4 min, finish with coriander.
+storage:
+  fridge_days: 2
+  freezer_days: null
+  note: null
+tips:
+- Same recipe with eggs instead of paneer = egg bhurji.
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

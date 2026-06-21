@@ -1,0 +1,60 @@
+id: curd-vegetable-raita
+name: Curd vegetable salad / raita
+category: salad
+base_servings: 4
+tags:
+- vegetarian
+- gluten-free
+- no-cook
+time:
+  prep_min: 6
+diet:
+  vegetarian: true
+  vegan: false
+  egg: false
+  gluten_free: true
+  no_cook: true
+ingredients:
+- item: curd
+  qty: 1
+  unit: cup
+  prep: whisked
+- item: tomato
+  qty: 0.5
+  unit: piece
+  prep: diced
+- item: cucumber
+  qty: 0.5
+  unit: piece
+  prep: diced
+- item: onion
+  qty: 0.5
+  unit: piece
+  prep: diced
+- item: cumin-powder
+  qty: 0.5
+  unit: tsp
+  prep: roasted
+  scale: false
+- item: salt
+  qty: null
+  unit: to_taste
+  scale: false
+- item: coriander-fresh
+  qty: 1
+  unit: tbsp
+  prep: chopped
+  optional: true
+steps:
+- Fold diced vegetables into whisked curd with roasted cumin and salt.
+storage:
+  fridge_days: 1
+  freezer_days: null
+  note: null
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

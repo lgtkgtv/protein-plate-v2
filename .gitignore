@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# MkDocs build output
+site/
+
+# Generated content artifacts (regenerated from data/ — never committed)
+data/_generated_preview/
+data/sample_grocery_list.md
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

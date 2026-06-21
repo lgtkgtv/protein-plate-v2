@@ -1,0 +1,42 @@
+id: boiled-eggs
+name: Boiled eggs
+category: protein-anchor
+protein_family: eggs
+base_servings: 4
+tags:
+- high-protein
+- gluten-free
+- egg
+time:
+  prep_min: 1
+  cook_min: 9
+diet:
+  vegetarian: false
+  vegan: false
+  egg: true
+  gluten_free: true
+  no_cook: false
+ingredients:
+- item: eggs
+  qty: 8
+  unit: piece
+- item: water
+  qty: null
+  unit: to_cover
+  scale: false
+steps:
+- Cover eggs with water, boil 8-9 min.
+- Ice-bath, then peel.
+storage:
+  fridge_days: 7
+  freezer_days: null
+  note: Keep in shell, fridge 5-7 days.
+tips:
+- 2 eggs per person is a typical serving.
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

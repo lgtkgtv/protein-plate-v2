@@ -1,0 +1,86 @@
+id: chicken-tikka-tawa
+name: Chicken tikka on tawa
+category: protein-anchor
+protein_family: chicken
+base_servings: 4
+tags:
+- high-protein
+- gluten-free
+- batch-friendly
+time:
+  prep_min: 15
+  marinate_min: 60
+  cook_min: 20
+diet:
+  vegetarian: false
+  vegan: false
+  egg: false
+  gluten_free: true
+  no_cook: false
+ingredients:
+- item: boneless-chicken
+  qty: 900
+  unit: g
+  prep: cubed
+- item: curd
+  qty: 0.75
+  unit: cup
+  prep: hung
+- item: ginger-garlic-paste
+  qty: 1.5
+  unit: tbsp
+- item: lemon
+  qty: 2
+  unit: tbsp
+- item: kashmiri-chilli-powder
+  qty: 1.5
+  unit: tsp
+  scale: false
+- item: turmeric
+  qty: 0.5
+  unit: tsp
+  scale: false
+- item: garam-masala
+  qty: 1
+  unit: tsp
+  scale: false
+- item: chaat-masala
+  qty: 1
+  unit: tsp
+  scale: false
+- item: kasuri-methi
+  qty: 1
+  unit: tsp
+  scale: false
+- item: besan
+  qty: 2
+  unit: tbsp
+  prep: roasted
+  scale: false
+- item: oil
+  qty: 1
+  unit: tbsp
+- item: salt
+  qty: null
+  unit: to_taste
+  scale: false
+steps:
+- 'First marinade: chicken + lemon + ginger-garlic + salt, 30 min.'
+- 'Second marinade: add hung curd + spices + besan + oil; rest 1 hr, ideally overnight.'
+- Sear on a hot tawa/cast-iron, single layer, 4-5 min per side until charred and cooked
+  through (no pink, ~75 C internal). Work in batches.
+storage:
+  fridge_days: 3
+  freezer_days: 30
+  note: Freeze raw in marinade up to 1 month (thaw overnight); cooked keeps 3 days.
+media:
+  video: https://www.youtube.com/watch?v=8L7V1eTaTnw
+tips:
+- Hung curd makes the chicken sear instead of steam.
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

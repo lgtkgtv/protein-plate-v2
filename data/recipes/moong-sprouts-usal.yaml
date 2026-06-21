@@ -1,0 +1,98 @@
+id: moong-sprouts-usal
+name: Moong sprouts usal
+category: protein-anchor
+protein_family: sprouts-legumes
+base_servings: 4
+tags:
+- high-protein
+- vegan
+- gluten-free
+time:
+  prep_min: 10
+  cook_min: 15
+diet:
+  vegetarian: true
+  vegan: true
+  egg: false
+  gluten_free: true
+  no_cook: false
+ingredients:
+- item: moong-sprouts
+  qty: 3
+  unit: cup
+- item: onion
+  qty: 1
+  unit: piece
+  prep: chopped
+- item: tomato
+  qty: 1
+  unit: piece
+  prep: chopped
+- item: ginger-garlic-paste
+  qty: 1
+  unit: tsp
+- item: green-chilli
+  qty: 1
+  unit: piece
+  prep: slit
+- item: mustard-seeds
+  qty: 1
+  unit: tsp
+  scale: false
+- item: cumin-seeds
+  qty: 1
+  unit: tsp
+  scale: false
+- item: turmeric
+  qty: 0.5
+  unit: tsp
+  scale: false
+- item: red-chilli-powder
+  qty: 1
+  unit: tsp
+  scale: false
+- item: curry-leaves
+  qty: 1
+  unit: sprig
+  optional: true
+- item: oil
+  qty: 1
+  unit: tbsp
+- item: salt
+  qty: null
+  unit: to_taste
+  scale: false
+- item: coriander-fresh
+  qty: 2
+  unit: tbsp
+  prep: chopped
+  optional: true
+- item: lemon
+  qty: 0.5
+  unit: piece
+  optional: true
+- item: water
+  qty: 0.5
+  unit: cup
+  scale: false
+steps:
+- Heat oil; splutter mustard + cumin, add curry leaves, onion, ginger-garlic and chilli
+  — saute till golden.
+- Add tomato + dry spices; cook till soft.
+- Add sprouts + 1/2 cup water, cover, simmer 8-10 min (keep some crunch).
+- Finish with coriander and a squeeze of lemon.
+storage:
+  fridge_days: 3
+  freezer_days: null
+  note: null
+media:
+  video: https://www.youtube.com/watch?v=u33FYQVfZ68
+tips:
+- Steam sprouts first for a softer texture.
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

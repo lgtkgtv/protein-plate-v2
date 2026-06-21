@@ -1,0 +1,59 @@
+id: hummus
+name: Hummus
+category: condiment
+base_servings: 6
+tags:
+- vegetarian
+- vegan
+- gluten-free
+- batch-friendly
+time:
+  prep_min: 10
+diet:
+  vegetarian: true
+  vegan: true
+  egg: false
+  gluten_free: true
+  no_cook: false
+ingredients:
+- item: boiled-chickpeas
+  qty: 1.5
+  unit: cup
+- item: tahini
+  qty: 2
+  unit: tbsp
+- item: garlic
+  qty: 1
+  unit: clove
+- item: lemon
+  qty: 2
+  unit: tbsp
+- item: olive-oil
+  qty: 2
+  unit: tbsp
+- item: cumin-powder
+  qty: 0.5
+  unit: tsp
+  scale: false
+- item: salt
+  qty: null
+  unit: to_taste
+  scale: false
+- item: water
+  qty: null
+  unit: as_needed
+  scale: false
+steps:
+- Blend boiled chickpeas + tahini + garlic + lemon + olive oil + salt + cumin with
+  a little water until smooth.
+storage:
+  fridge_days: 5
+  freezer_days: null
+  note: null
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false

@@ -1,0 +1,95 @@
+id: chana-masala
+name: Chana / chickpea masala
+category: protein-anchor
+protein_family: sprouts-legumes
+base_servings: 4
+tags:
+- high-protein
+- vegan
+- gluten-free
+- batch-friendly
+time:
+  prep_min: 10
+  cook_min: 20
+diet:
+  vegetarian: true
+  vegan: true
+  egg: false
+  gluten_free: true
+  no_cook: false
+ingredients:
+- item: boiled-chickpeas
+  qty: 3
+  unit: cup
+- item: onion
+  qty: 2
+  unit: piece
+  prep: chopped
+- item: tomato
+  qty: 2
+  unit: piece
+  prep: pureed
+- item: ginger-garlic-paste
+  qty: 1
+  unit: tbsp
+- item: turmeric
+  qty: 0.5
+  unit: tsp
+  scale: false
+- item: red-chilli-powder
+  qty: 1
+  unit: tsp
+  scale: false
+- item: coriander-powder
+  qty: 1
+  unit: tsp
+  scale: false
+- item: cumin-powder
+  qty: 1
+  unit: tsp
+  scale: false
+- item: garam-masala
+  qty: 1
+  unit: tsp
+  scale: false
+- item: amchur
+  qty: 0.5
+  unit: tsp
+  scale: false
+- item: oil
+  qty: 2
+  unit: tbsp
+- item: salt
+  qty: null
+  unit: to_taste
+  scale: false
+- item: coriander-fresh
+  qty: 2
+  unit: tbsp
+  prep: chopped
+  optional: true
+- item: water
+  qty: 1
+  unit: cup
+  scale: false
+steps:
+- Saute onion till deep golden; add ginger-garlic, then tomato puree + spices; cook
+  till oil separates.
+- Add chickpeas + 1 cup water; simmer 10-15 min; mash a few to thicken.
+- Finish with garam masala, amchur and coriander.
+storage:
+  fridge_days: 5
+  freezer_days: 30
+  note: null
+media:
+  video: https://www.indianhealthyrecipes.com/chana-masala/
+tips:
+- Make a double batch of the onion-tomato masala base and freeze it — it becomes the
+  base for chana, paneer or egg dishes in minutes.
+macros_per_serving:
+  kcal: null
+  protein_g: null
+  carbs_g: null
+  fat_g: null
+  source: null
+  verified: false
