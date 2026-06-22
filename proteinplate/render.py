@@ -29,7 +29,14 @@ def _num(q):
     return str(int(q)) if abs(q - round(q)) < 1e-9 else f"{q:g}"
 
 
-def _ingredient(ig):
+def _qty_span(qty, base_servings, scales):
+    """Wrap a numeric quantity so the client-side serving scaler can rescale it."""
+    return (f'<span class="pp-qty" data-qty="{qty:g}" '
+            f'data-base="{base_servings}" data-scale="{1 if scales else 0}">'
+            f'{_num(qty)}</span>')
+
+
+def _ingredient(ig, base_servings=None, scalable=False):
     item = ig["item"]
     name = data.display_name(item)
     prep = f" ({ig['prep']})" if ig.get("prep") else ""
@@ -39,9 +46,14 @@ def _ingredient(ig):
         word = {"to_taste": "to taste", "as_needed": "as needed",
                 "to_cover": "to cover"}.get(unit, "as needed")
         return f"{name} {word}{prep}{opt}"
+    # numeric quantity
+    if scalable:
+        num = _qty_span(qty, base_servings, ig.get("scale", True))
+    else:
+        num = _num(qty)
     if unit == "piece":
-        return f"{_num(qty)} {name}{prep}{opt}"
-    return f"{_num(qty)} {unit} {name}{prep}{opt}"
+        return f"{num} {name}{prep}{opt}"
+    return f"{num} {unit} {name}{prep}{opt}"
 
 
 def _storage_line(storage):
@@ -68,7 +80,18 @@ def render_recipes_page():
            "Every recipe is scaled for a **family of 4** and generated from the "
            "[recipe data](https://github.com/lgtkgtv/protein-plate-v2/tree/main/data). "
            "Pick one protein anchor, then add a cooked veg, a salad, dairy and "
-           "nuts/seeds.", ""]
+           "nuts/seeds.", "",
+           '<div class="pp-servings" role="group" aria-label="Adjust servings">',
+           '  <span class="pp-servings__label">Show recipes for</span>',
+           '  <button type="button" data-servings="1">1</button>',
+           '  <button type="button" data-servings="2">2</button>',
+           '  <button type="button" data-servings="4" aria-pressed="true">4</button>',
+           '  <button type="button" data-servings="6">6</button>',
+           '  <span class="pp-servings__suffix">people</span>',
+           '</div>',
+           "",
+           "_Spices, oil and salt stay fixed when you rescale; batch items "
+           "(dips, toasted nuts) are made in bulk and don't rescale._", ""]
     by_cat = {}
     for r in recipes.values():
         by_cat.setdefault(r["category"], []).append(r)
@@ -83,8 +106,18 @@ def render_recipes_page():
             img = r.get("media", {}).get("image")
             if img:
                 out.append(f"![{r['name']}]({img})\n")
-            ings = " · ".join(_ingredient(i) for i in r["ingredients"])
-            out.append(f"**Ingredients ({r['base_servings']}):** {ings}\n")
+            scalable = r["category"] != "condiment"
+            bs = r["base_servings"]
+            ings = " · ".join(
+                _ingredient(i, base_servings=bs, scalable=scalable)
+                for i in r["ingredients"])
+            if scalable:
+                label = (f'**Ingredients** (for '
+                         f'<span class="pp-srv" data-base="{bs}">{bs}</span>): ')
+            else:
+                noun = "makes ~" if r.get("batch") else "serves "
+                label = f"**Ingredients** ({noun}{bs}): "
+            out.append(f"{label}{ings}\n")
             for n, step in enumerate(r["steps"], 1):
                 out.append(f"{n}. {step}")
             out.append("")

@@ -57,6 +57,12 @@ markdown_extensions:
   - toc:
       permalink: true
 
+extra_css:
+  - assets/css/extra.css
+
+extra_javascript:
+  - assets/js/serving-scaler.js
+
 nav:
   - Home: index.md
   - The Plate: the-plate.md

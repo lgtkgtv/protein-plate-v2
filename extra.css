@@ -1,0 +1,44 @@
+/* Serving scaler control on the Recipes page */
+.pp-servings {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.pp-servings__label {
+  font-weight: 600;
+}
+
+.pp-servings__suffix {
+  color: var(--md-default-fg-color--light);
+}
+
+.pp-servings button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background: transparent;
+  color: var(--md-default-fg-color);
+  border-radius: 1rem;
+  padding: 0.15rem 0.85rem;
+  line-height: 1.6;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.pp-servings button:hover {
+  border-color: var(--md-primary-fg-color);
+}
+
+.pp-servings button[aria-pressed="true"] {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  border-color: var(--md-primary-fg-color);
+}
+
+/* Scaled quantities get a subtle underline so it's clear they're live */
+.pp-qty {
+  font-variant-numeric: tabular-nums;
+  border-bottom: 1px dotted var(--md-default-fg-color--lighter);
+}

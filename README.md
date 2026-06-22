@@ -31,6 +31,10 @@ data/*.yaml ──▶ proteinplate (data · grocery · render) ──┬──�
                                                           └──▶ CLI / future PWA / API
 ```
 
+## How it's built
+
+New here? **[`DESIGN.md`](DESIGN.md)** walks through the whole project by phase — the planning, design decisions, and how the code is wired. [`SCHEMA.md`](SCHEMA.md) is the data contract; [`WIRING.md`](WIRING.md) is the build mechanics.
+
 ## Repository layout
 
 ```
@@ -46,7 +50,7 @@ docs/
 schema/recipe.schema.json   the enforced contract
 scripts/               validate.py · build_grocery_list.py · preview_pages.py
 mkdocs.yml  pyproject.toml  uv.lock  .python-version
-SCHEMA.md   WIRING.md  (design + architecture docs)
+DESIGN.md   SCHEMA.md  WIRING.md   (design + architecture docs)
 ```
 
 ## Quick start
