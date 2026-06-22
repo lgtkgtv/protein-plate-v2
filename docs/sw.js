@@ -10,7 +10,7 @@
  *   - other GETs (CSS/JS/images): cache-first, fill the cache on miss
  * Bump VERSION to roll the cache when the app shell changes.
  */
-const VERSION = "v1";
+const VERSION = "v3";
 const CACHE = "proteinplate-" + VERSION;
 
 const CORE = [

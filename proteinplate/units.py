@@ -35,8 +35,13 @@ def dimension(unit):
     return None  # to_taste / as_needed / unknown -> caller handles separately
 
 
+import math
+
+
 def _round_to(x, step):
-    return round(x / step) * step
+    # Half-up rounding (not Python's banker's rounding), so a small spice amount
+    # never collapses to "0 tsp" and the result matches the browser's Math.round.
+    return math.floor(x / step + 0.5) * step
 
 
 def _render_volume(ml):
@@ -57,34 +62,58 @@ def _render_mass(g):
     return (_round_to(g, 5), "g")
 
 
+def to_base(qty, unit):
+    """Convert one (qty, unit) to a canonical (dim, value).
+
+    dim is "mass" (grams), "volume" (millilitres), "count:<unit>" (kept as-is),
+    or "taste" (value None). This is the single source for conversion factors;
+    the web export reuses it so the browser never re-implements them.
+    """
+    d = dimension(unit)
+    if d == "volume":
+        return ("volume", qty * _VOLUME_ML[unit])
+    if d == "mass":
+        return ("mass", qty * _MASS_G[unit])
+    if d == "count":
+        return ("count:" + unit, qty)
+    return ("count:" + unit, qty)  # forgiving for unknown units
+
+
+def render_base(dim, value):
+    """Render a summed canonical value back to a display (qty, unit)."""
+    if dim == "mass":
+        return _render_mass(value)
+    if dim == "volume":
+        return _render_volume(value)
+    return (value, dim.split(":", 1)[1])  # count:<unit>
+
+
 def normalize(amounts):
     """amounts: iterable of (qty, unit) with numeric qty.
 
     Returns a list of (qty, unit) display amounts, minimal per dimension and
     ordered mass -> volume -> count for stable, readable output.
     """
-    vol_ml = mass_g = 0.0
-    have_vol = have_mass = False
-    counts = {}  # unit -> qty
+    mass_g = vol_ml = 0.0
+    have_mass = have_vol = False
+    counts = {}  # "count:<unit>" -> qty
 
     for qty, unit in amounts:
-        dim = dimension(unit)
-        if dim == "volume":
-            vol_ml += qty * _VOLUME_ML[unit]
-            have_vol = True
-        elif dim == "mass":
-            mass_g += qty * _MASS_G[unit]
+        dim, value = to_base(qty, unit)
+        if dim == "mass":
+            mass_g += value
             have_mass = True
-        elif dim == "count":
-            counts[unit] = counts.get(unit, 0.0) + qty
+        elif dim == "volume":
+            vol_ml += value
+            have_vol = True
         else:
-            counts[unit] = counts.get(unit, 0.0) + qty  # be forgiving
+            counts[dim] = counts.get(dim, 0.0) + value
 
     out = []
     if have_mass:
-        out.append(_render_mass(mass_g))
+        out.append(render_base("mass", mass_g))
     if have_vol:
-        out.append(_render_volume(vol_ml))
-    for unit, qty in sorted(counts.items()):
-        out.append((qty, unit))
+        out.append(render_base("volume", vol_ml))
+    for dim, qty in sorted(counts.items()):
+        out.append(render_base(dim, qty))
     return out

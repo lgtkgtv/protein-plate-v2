@@ -28,3 +28,11 @@ jobs:
           enable-cache: true
       - run: uv sync --locked
       - run: uv run python scripts/validate.py
+      - run: uv run python tests/test_grocery_units.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Grocery JS<->Python parity
+        run: |
+          uv run python tests/gen_parity.py
+          node tests/grocery_parity.mjs

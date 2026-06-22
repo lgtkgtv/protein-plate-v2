@@ -208,6 +208,41 @@ row-filter (`meal-plan.js`). The Keto chapter also gained a sourced
 *"how often should you eat?"* section (keto is defined by macros, not meal
 timing; 2–3 meals a day is the recommended norm).
 
+> Superseded by **2.6**: once the plan became user-configurable, the grocery list
+> had to follow an arbitrary plan, so the pre-rendered Python scopes were replaced
+> by a shared aggregation core. The "no maths in JS" goal is preserved differently
+> — see below.
+
+## 2.6 Configurable meal planner
+
+**What changed.** The meal plan is now **yours to edit**. Each day's protein,
+cooked veg and salad are dropdowns (pre-filled with sensible defaults); pick from
+the recipe list to build your own week, trim it to 1 / 3 / 7 days, or reset to the
+default. Your plan is saved on the device, and the **grocery list follows it** —
+shop for your whole plan, any single day, or any single meal.
+
+**How it's wired.**
+
+- `proteinplate/webdata.py` emits a compact JSON payload where every recipe
+  ingredient is *already resolved* to a grocery contribution (display, category,
+  note, and a canonical `(base, dim)` from `units.to_base`). All registry logic
+  (`purchase_as`, skips, notes) stays in Python.
+- `docs/assets/js/grocery-core.js` is a **pure module shared by the browser and a
+  Node test**. It sums the selected recipes and renders amounts with the same
+  tiers as `units.py`. Because a configurable plan can't be pre-aggregated in
+  Python, the maths now runs in the browser — but correctness is locked down by
+  `tests/grocery_parity.mjs`, which checks the JS core against the Python
+  aggregator on several plans (run in CI). That replaces "no JS maths" with
+  "JS maths proven equal to the Python source of truth."
+- Counting respects make-ahead reality: condiments and `batch` items count **once**
+  for a multi-day plan, mains count per day they appear — so a week's plan doesn't
+  tell you to buy 7× the nuts.
+- `meal-plan.js` persists the dropdowns (`pp-plan`) and runs the duration filter;
+  `grocery.js` reads that plan plus the payload and renders the list via the core,
+  with the per-scope checkboxes and basket toolbar. A Python-rendered default-week
+  list remains as the no-JS fallback. While refactoring, `units.py` switched to
+  half-up rounding, which also fixed a latent "0 tsp" spice result.
+
 ## 2.4 Installable, offline PWA
 
 **What changed.** ProteinPlate is now a Progressive Web App. On a phone you can

@@ -124,3 +124,19 @@
   color: var(--md-primary-bg-color);
   border-color: var(--md-primary-fg-color);
 }
+
+/* Editable meal-plan dropdowns */
+.pp-pick {
+  font: inherit;
+  max-width: 100%;
+  padding: 0.15rem 0.3rem;
+  border-radius: 0.3rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+}
+.pp-plan-reset { margin-left: auto; }
+.md-typeset table.pp-plan td { vertical-align: middle; }
+
+/* Dynamic grocery category label (not a heading, so it stays out of the TOC) */
+.pp-cat { margin: 1rem 0 0.25rem; }
