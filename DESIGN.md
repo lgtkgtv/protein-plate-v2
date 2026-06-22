@@ -160,8 +160,29 @@ the recipe's base servings, and whether it scales. `docs/assets/js/serving-scale
 reads the selected count and recomputes each span (`base × target / base_servings`
 for scalable items, unchanged otherwise), reformatting fractions. Styling is in
 `docs/assets/css/extra.css`, themed with Material's CSS variables, and both are
-registered via `extra_css` / `extra_javascript` in `mkdocs.yml`. Selection is
-in-memory for now; persistence arrives with Phase 2.3.
+registered via `extra_css` / `extra_javascript` in `mkdocs.yml`. The chosen count
+is remembered across reloads — see Phase 2.3.
+
+## 2.3 Persistent state (localStorage)
+
+**What changed.** Two reader settings now survive a page refresh, which matters
+in the one place it's used most — standing in a shop:
+
+- **Grocery checkboxes** are clickable and persistent. Tick items off; a reload
+  (or coming back later) keeps your progress. A small toolbar shows
+  *"N / M in the basket"* with a **Reset** button, and checked items are muted
+  and struck through.
+- **The serving count** (1 / 2 / 4 / 6) is remembered, so the Recipes page opens
+  at the size you last cooked for.
+
+**How it's wired.** `pymdownx.tasklist` is set to `clickable_checkbox: true` so
+the rendered checkboxes aren't disabled. `docs/assets/js/grocery-checklist.js`
+stores each box under `pp-check:<page>|<ingredient-name>` — keyed by the name
+*before* the quantity, so ticks stay valid even when amounts change. The serving
+scaler stores its choice under `pp-servings` and re-applies it on load. All
+storage is wrapped in try/catch so a privacy-locked browser degrades gracefully
+rather than breaking the page. State is per-device (localStorage), which is the
+right scope for a personal shopping list.
 
 ---
 
@@ -169,17 +190,15 @@ in-memory for now; persistence arrives with Phase 2.3.
 
 In rough priority:
 
-1. **Persistent checkboxes** (Phase 2.3) — the grocery list already renders real
-   checkboxes; add `localStorage` so ticks (and the chosen serving count) survive
-   a refresh.
-2. **PWA** (Phase 2.4) — installable, offline grocery checklist for the store.
-3. **Verified macros** — fill the schema's macro slots from USDA FDC / IFCT with a
+1. **PWA** (Phase 2.4) — installable, offline grocery checklist for the store
+   (the persistence from Phase 2.3 is already the groundwork).
+2. **Verified macros** — fill the schema's macro slots from USDA FDC / IFCT with a
    human check.
-4. **Dry→weight grocery conversion** — turn "4½ cup boiled chickpeas" into grams
+3. **Dry→weight grocery conversion** — turn "4½ cup boiled chickpeas" into grams
    of dry chana using per-ingredient yields.
-5. **No-stub CI guard** — fail the build if any page is a placeholder, so the
+4. **No-stub CI guard** — fail the build if any page is a placeholder, so the
    Phase 1.4 regression can't recur.
-6. **schema.org `Recipe` JSON-LD + i18n** — richer search results and translation
+5. **schema.org `Recipe` JSON-LD + i18n** — richer search results and translation
    readiness.
 
 ---

@@ -42,3 +42,42 @@
   font-variant-numeric: tabular-nums;
   border-bottom: 1px dotted var(--md-default-fg-color--lighter);
 }
+
+/* Persistent grocery checklist */
+.pp-cart {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.5rem 0 1rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.5rem;
+  background: var(--md-code-bg-color);
+}
+
+.pp-cart__count {
+  font-weight: 600;
+}
+
+.pp-cart__reset {
+  font: inherit;
+  cursor: pointer;
+  margin-left: auto;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background: transparent;
+  color: var(--md-default-fg-color);
+  border-radius: 1rem;
+  padding: 0.1rem 0.8rem;
+}
+
+.pp-cart__reset:hover {
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-fg-color);
+}
+
+/* Checked-off items: muted + struck through */
+.task-list-item.pp-checked {
+  color: var(--md-default-fg-color--light);
+  text-decoration: line-through;
+  text-decoration-color: var(--md-default-fg-color--lighter);
+}

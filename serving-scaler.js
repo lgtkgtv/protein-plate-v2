@@ -40,17 +40,40 @@
     });
   }
 
+  var STORE_KEY = "pp-servings";
+
+  function load() {
+    try {
+      var v = parseFloat(localStorage.getItem(STORE_KEY));
+      return isFinite(v) ? v : null;
+    } catch (e) { return null; }
+  }
+
+  function save(v) {
+    try { localStorage.setItem(STORE_KEY, String(v)); } catch (e) {}
+  }
+
+  function select(group, target) {
+    group.querySelectorAll("button").forEach(function (b) {
+      b.setAttribute("aria-pressed",
+        parseFloat(b.dataset.servings) === target ? "true" : "false");
+    });
+    apply(target);
+  }
+
   function init() {
     var group = document.querySelector(".pp-servings");
     if (!group) return;
     group.addEventListener("click", function (e) {
       var btn = e.target.closest("button[data-servings]");
       if (!btn) return;
-      group.querySelectorAll("button").forEach(function (b) {
-        b.setAttribute("aria-pressed", b === btn ? "true" : "false");
-      });
-      apply(parseFloat(btn.dataset.servings));
+      var target = parseFloat(btn.dataset.servings);
+      select(group, target);
+      save(target);
     });
+    // restore a previously chosen serving count (default stays at 4 in markup)
+    var saved = load();
+    if (saved && saved !== 4) select(group, saved);
   }
 
   // Material's instant navigation swaps page content without a full reload, so

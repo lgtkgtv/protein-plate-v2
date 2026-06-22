@@ -54,6 +54,7 @@ markdown_extensions:
   - md_in_html
   - pymdownx.tasklist:        # renders the grocery "- [ ]" as real checkboxes
       custom_checkbox: true
+      clickable_checkbox: true   # let readers tick items in the browser
   - toc:
       permalink: true
 
@@ -62,6 +63,7 @@ extra_css:
 
 extra_javascript:
   - assets/js/serving-scaler.js
+  - assets/js/grocery-checklist.js
 
 nav:
   - Home: index.md
