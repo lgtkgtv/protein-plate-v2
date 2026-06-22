@@ -159,8 +159,9 @@ def render_grocery_page():
             continue
         out.append(f"## {heading}\n")
         for t in rows:
+            amount = " + ".join(f"{_num(q)} {u}" for q, u in t["amounts"])
             note = f"  *({notes[t['display']]})*" if t["display"] in notes else ""
-            out.append(f"- [ ] {t['display']} — {_num(t['qty'])} {t['unit']}{note}")
+            out.append(f"- [ ] {t['display']} — {amount}{note}")
         for d in extras:
             note = f"  *({notes[d]})*" if d in notes else ""
             out.append(f"- [ ] {d} — to taste / as needed{note}")

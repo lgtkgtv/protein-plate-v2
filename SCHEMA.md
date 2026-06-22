@@ -76,10 +76,14 @@ health-adjacent project honest. The schema is ready to receive them today.
 
 ## Extension roadmap (intentionally not in v1)
 
-1. **Unit normalisation** — the grocery builder currently lists the same item
-   once per unit (e.g. oil in both tbsp and tsp) because it never adds unlikes.
-   A small conversion table (tsp→tbsp→cup, g↔kg, and density for cup↔g of known
-   items) collapses these. Correct-but-verbose now; tidy later.
+1. **Unit normalisation** — *implemented* (`proteinplate/units.py`). The grocery
+   builder now sums each ingredient's quantities by physical dimension (volume →
+   cups/tbsp/tsp, mass → g/kg) so oil shows as one "¾ cup" line instead of
+   "tbsp + tsp" duplicates. Count/fuzzy units (piece, clove, handful) and genuine
+   cross-dimension cases (lemon as pieces *and* juice in tbsp) are kept separate
+   on purpose. The remaining refinement is **dry→cooked/weight conversion** for
+   `purchase_as` items (e.g. "4½ cup boiled chickpeas" → grams of dry chana),
+   which needs per-ingredient yields/densities — deliberately still deferred.
 2. **Component composition** — the onion-tomato masala base is currently inlined
    in chana / bhurji / egg-bhurji. A `uses: [masala-base]` reference with
    recursive expansion would model "one base, many meals" in data. Kept inline
