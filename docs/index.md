@@ -40,3 +40,8 @@ What's deliberately **missing** matters as much as what's present: almost no ric
 
 !!! warning "Please read"
     ProteinPlate is **general food and wellness information, not medical advice.** Your real calorie and protein targets are personal — see the [health note](about.md).
+
+!!! tip "Use it in the kitchen and the shop"
+    On a phone, open your browser menu and choose **Add to Home Screen** to
+    install ProteinPlate as an app. It opens full-screen and works **offline** —
+    handy for ticking off the grocery list in the aisle.

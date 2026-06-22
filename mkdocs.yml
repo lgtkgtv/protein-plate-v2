@@ -12,6 +12,7 @@ copyright: >-
 
 theme:
   name: material
+  custom_dir: overrides
   icon:
     logo: material/silverware-fork-knife
   palette:
@@ -64,6 +65,7 @@ extra_css:
 extra_javascript:
   - assets/js/serving-scaler.js
   - assets/js/grocery-checklist.js
+  - assets/js/pwa.js
 
 nav:
   - Home: index.md

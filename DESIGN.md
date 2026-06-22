@@ -184,21 +184,50 @@ storage is wrapped in try/catch so a privacy-locked browser degrades gracefully
 rather than breaking the page. State is per-device (localStorage), which is the
 right scope for a personal shopping list.
 
+## 2.4 Installable, offline PWA
+
+**What changed.** ProteinPlate is now a Progressive Web App. On a phone you can
+"Add to Home Screen" and it launches full-screen like a native app, with its own
+plate-and-cutlery icon. Once visited, it works **offline** — the grocery list,
+recipes and plan are all available in the aisle with no signal, and the
+persistent checkboxes (Phase 2.3) keep working.
+
+**How it's wired.**
+
+- **`docs/manifest.json`** declares the app (name, standalone display, green theme,
+  icons). Paths are relative so it works at `/` or under a project subpath. (We use
+  `.json`, not `.webmanifest`, because GitHub Pages can serve the latter with the
+  wrong MIME type.)
+- **`docs/sw.js`** is the service worker, deliberately placed at the **site root**
+  so its scope covers the whole app (a worker can't control paths above itself).
+  It precaches the app shell on install, serves navigations network-first (fresh
+  when online, cached when not, home as last resort), and cache-fills other GETs.
+  A `VERSION` constant rolls the cache when the shell changes.
+- **`overrides/main.html`** (via `theme.custom_dir`) injects the
+  `<link rel="manifest">`, `theme-color`, and Apple touch-icon tags into every
+  page's head, using Material's `base_url` so the subpath is handled.
+- **`docs/assets/js/pwa.js`** registers the worker, deriving the site base from
+  the manifest link's URL — no hardcoded repo name.
+- **Icons** (`docs/assets/icons/`) are 192/512 plus a maskable variant, generated
+  to match the theme.
+
+Service workers require a secure context, which both `mkdocs serve` (localhost)
+and GitHub Pages (HTTPS) provide. Verify in the browser via DevTools →
+Application → Manifest / Service Workers, and the install prompt.
+
 ---
 
 # Roadmap / backlog
 
 In rough priority:
 
-1. **PWA** (Phase 2.4) — installable, offline grocery checklist for the store
-   (the persistence from Phase 2.3 is already the groundwork).
-2. **Verified macros** — fill the schema's macro slots from USDA FDC / IFCT with a
+1. **Verified macros** — fill the schema's macro slots from USDA FDC / IFCT with a
    human check.
-3. **Dry→weight grocery conversion** — turn "4½ cup boiled chickpeas" into grams
+2. **Dry→weight grocery conversion** — turn "4½ cup boiled chickpeas" into grams
    of dry chana using per-ingredient yields.
-4. **No-stub CI guard** — fail the build if any page is a placeholder, so the
+3. **No-stub CI guard** — fail the build if any page is a placeholder, so the
    Phase 1.4 regression can't recur.
-5. **schema.org `Recipe` JSON-LD + i18n** — richer search results and translation
+4. **schema.org `Recipe` JSON-LD + i18n** — richer search results and translation
    readiness.
 
 ---
