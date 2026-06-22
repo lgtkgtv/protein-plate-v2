@@ -37,7 +37,7 @@
 
     // Duration filter (1 / 3 / 7 days).
     var rows = Array.prototype.slice.call(
-      document.querySelectorAll("tr[data-day-index]"));
+      document.querySelectorAll("[data-day-index]"));
     function applyDays(n) {
       rows.forEach(function (row, i) { row.style.display = i < n ? "" : "none"; });
     }

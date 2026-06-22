@@ -245,15 +245,20 @@ def render_meal_plan_page():
     def name(rid):
         return recipes[rid]["name"] if rid in recipes else rid
 
+    def esc(s):
+        return (str(s).replace("&", "&amp;").replace("<", "&lt;")
+                .replace(">", "&gt;"))
+
     def select(slot, day, current):
         opts = []
         for rid, label in options[slot]:
             sel = " selected" if rid == current else ""
-            opts.append(f'<option value="{rid}"{sel}>{label}</option>')
-        return (f'<select class="pp-pick" data-day="{day}" data-slot="{slot}" '
-                f'data-default="{current}">' + "".join(opts) + "</select>")
+            opts.append(f'<option value="{rid}"{sel}>{esc(label)}</option>')
+        return (f'<select class="pp-pick" data-day="{esc(day)}" '
+                f'data-slot="{slot}" data-default="{current}">'
+                + "".join(opts) + "</select>")
 
-    out = ["# 7-Day Meal Plan", "",
+    out = ["# Build Your Meal Plan", "",
            f"A starting plan for a family of {plan.get('servings', 4)} — "
            "**swap any meal from the dropdowns** to make it yours. Your choices "
            "are saved on this device, and the [grocery list](grocery-list.md) "
@@ -266,22 +271,26 @@ def render_meal_plan_page():
            '  <button type="button" class="pp-plan-reset">Reset to default</button>',
            '</div>', ""]
 
-    # Editable plan table (raw HTML so cells can hold <select> and rows carry ids).
-    out.append('<table class="pp-plan" markdown="0">')
-    out.append("<thead><tr><th>Day</th><th>Protein anchor</th>"
-               "<th>Cooked veg</th><th>Salad</th><th>Extras</th></tr></thead>")
-    out.append("<tbody>")
+    # Editable plan as one card per day: stacked, full-width fields that read
+    # well on a phone and flow into 2-3 columns on wider screens. Raw HTML so
+    # the cards can hold <select> and carry the data-day-index the filter uses.
+    out.append('<div class="pp-planner" markdown="0">')
     for i, d in enumerate(plan.get("days", [])):
         day = d["day"]
         extras = ", ".join(name(x) for x in d.get("extras", []))
-        out.append(f'<tr data-day="{day}" data-day-index="{i}">')
-        out.append(f"<td>{day}</td>")
-        out.append(f"<td>{select('protein', day, d.get('protein',''))}</td>")
-        out.append(f"<td>{select('cooked_veg', day, d.get('cooked_veg',''))}</td>")
-        out.append(f"<td>{select('salad', day, d.get('salad',''))}</td>")
-        out.append(f"<td>{extras}</td>")
-        out.append("</tr>")
-    out.append("</tbody></table>")
+        out.append(f'<div class="pp-day" data-day="{esc(day)}" data-day-index="{i}">')
+        out.append(f'<h3 class="pp-day__name">{esc(day)}</h3>')
+        out.append('<div class="pp-field"><label>Protein anchor</label>'
+                   + select("protein", day, d.get("protein", "")) + "</div>")
+        out.append('<div class="pp-field"><label>Cooked veg</label>'
+                   + select("cooked_veg", day, d.get("cooked_veg", "")) + "</div>")
+        out.append('<div class="pp-field"><label>Salad</label>'
+                   + select("salad", day, d.get("salad", "")) + "</div>")
+        if extras:
+            out.append('<p class="pp-day__extras"><span>Extras</span>'
+                       + esc(extras) + "</p>")
+        out.append("</div>")
+    out.append("</div>")
     out.append("")
     out.append("_Extras (drinks, dips, nuts) stay as the default accompaniments "
                "and are included in the grocery list._")

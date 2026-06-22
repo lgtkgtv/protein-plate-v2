@@ -34,7 +34,7 @@ What's deliberately **missing** matters as much as what's present: almost no ric
 - **[The Plate](the-plate.md)** — an annotated plate, with every item and its portion
 - **[Ingredients & Portions](ingredients.md)** — each dish mapped to its raw ingredients
 - **[Recipes](recipes.md)** — the cookbook, scaled for 4, with video links
-- **[7-Day Meal Plan](meal-plan.md)** — a decision-free week
+- **[Meal Plan](meal-plan.md)** — a starter week you can customize day by day
 - **[Grocery List](grocery-list.md)** — one week, family of 4
 - **[Keto Chapter](keto.md)** — an optional stricter low-carb variation
 

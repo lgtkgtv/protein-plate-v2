@@ -5,6 +5,7 @@ and the local preview script both call these, so the website and any other
 surface render from identical logic.
 """
 from . import data
+from . import webdata
 from .grocery import aggregate, CATEGORY_ORDER
 
 # Category -> section heading on the recipes page, in display order.
@@ -204,68 +205,31 @@ def _grocery_list_md(counts):
     return "\n".join(lines)
 
 
-def _day_counts(day):
-    counts = {}
-    for slot in ("protein", "cooked_veg", "salad"):
-        if day.get(slot):
-            counts[day[slot]] = counts.get(day[slot], 0) + 1
-    for rid in day.get("extras", []):
-        counts[rid] = counts.get(rid, 0) + 1
-    return counts
-
-
 def render_grocery_page():
     mp = data.meal_plan()
-    recipes = data.recipes()
-    days = mp.get("days", [])
     batches = mp.get("batches", {})
 
-    # Build every shopping scope: (value, label, {recipe: count}).
-    scopes = [("week", "Whole week (7 days)", batches)]
-    for d in days:
-        scopes.append((f"day:{d['day']}", d["day"], _day_counts(d)))
-    for i in range(len(days) - 2):                      # 3 consecutive days
-        window = days[i:i + 3]
-        counts = {}
-        for d in window:
-            for rid, n in _day_counts(d).items():
-                counts[rid] = counts.get(rid, 0) + n
-        scopes.append((f"d3:{window[0]['day']}",
-                       f"{window[0]['day']}\u2013{window[2]['day']}", counts))
-    for rid in sorted(recipes, key=lambda r: recipes[r]["name"]):
-        scopes.append((f"meal:{rid}", recipes[rid]["name"], {rid: 1}))
-
     out = ["# Grocery List", "",
-           "Pick what you're shopping for — the whole week, a single day, a "
-           "3-day stretch, or just one meal — then tick items off as you go. "
-           "Each list is generated from the recipe data, so the amounts always "
-           "match the plates.", ""]
+           "This list follows your [meal plan](meal-plan.md). Choose what to "
+           "shop for — your whole plan, a single day, or just one meal — and "
+           "tick things off as you go. Condiments and batch items (dips, nuts, "
+           "chaas) count as one make-ahead batch, not once per day.", "",
+           # JS builds the selector + list here from your saved plan.
+           '<div id="pp-grocery-app" markdown="0"></div>', ""]
 
-    # Scope selector (progressively enhanced; the week list shows without JS).
-    out.append('<div class="pp-scope" markdown="0">')
-    out.append('  <label for="pp-scope-select">Shopping for</label>')
-    out.append('  <select id="pp-scope-select" class="pp-scope__select">')
-    groups = [("day:", "A single day"), ("d3:", "3 days from"),
-              ("meal:", "A single meal")]
-    out.append('    <option value="week" selected>Whole week (7 days)</option>')
-    for prefix, glabel in groups:
-        out.append(f'    <optgroup label="{glabel}">')
-        for v, lbl, _c in scopes:
-            if v.startswith(prefix):
-                out.append(f'      <option value="{v}">{lbl}</option>')
-        out.append('    </optgroup>')
-    out.append('  </select>')
-    out.append('</div>')
+    # No-JS fallback: the default week, aggregated in Python.
+    out.append('<div id="pp-grocery-fallback" markdown="1">')
+    out.append("")
+    out.append("_Showing the default week. Enable JavaScript to shop for a "
+               "single day or meal from your own plan._")
+    out.append("")
+    out.append(_grocery_list_md(batches))
+    out.append("</div>")
     out.append("")
 
-    # One pre-rendered list per scope; all hidden except the week.
-    for v, lbl, counts in scopes:
-        hidden = "" if v == "week" else " hidden"
-        out.append(f'<div class="pp-scope-list" data-scope="{v}" markdown="1"{hidden}>')
-        out.append("")
-        out.append(_grocery_list_md(counts))
-        out.append('</div>')
-        out.append("")
+    # Data for the browser (recipes pre-resolved to grocery contributions).
+    out.append('<script type="application/json" id="pp-data">'
+               + webdata.to_json() + "</script>")
     return "\n".join(out)
 
 
@@ -275,37 +239,66 @@ def render_grocery_page():
 def render_meal_plan_page():
     recipes = data.recipes()
     plan = data.meal_plan()
+    pay = webdata.payload()
+    options = pay["options"]
 
     def name(rid):
         return recipes[rid]["name"] if rid in recipes else rid
 
-    out = ["# 7-Day Meal Plan", "",
-           f"A decision-free week for a family of {plan.get('servings', 4)}. "
-           "Each plate = a protein anchor + a cooked veg + a salad + extras. "
-           "Generated from the data, so it stays in sync with the recipes and "
-           "the grocery list.", "",
+    def esc(s):
+        return (str(s).replace("&", "&amp;").replace("<", "&lt;")
+                .replace(">", "&gt;"))
+
+    def select(slot, day, current):
+        opts = []
+        for rid, label in options[slot]:
+            sel = " selected" if rid == current else ""
+            opts.append(f'<option value="{rid}"{sel}>{esc(label)}</option>')
+        return (f'<select class="pp-pick" data-day="{esc(day)}" '
+                f'data-slot="{slot}" data-default="{current}">'
+                + "".join(opts) + "</select>")
+
+    out = ["# Build Your Meal Plan", "",
+           f"A starting plan for a family of {plan.get('servings', 4)} — "
+           "**swap any meal from the dropdowns** to make it yours. Your choices "
+           "are saved on this device, and the [grocery list](grocery-list.md) "
+           "follows whatever plan you build.", "",
            '<div class="pp-duration" role="group" aria-label="Plan length">',
            '  <span class="pp-duration__label">Show</span>',
            '  <button type="button" data-days="1">1 day</button>',
            '  <button type="button" data-days="3">3 days</button>',
            '  <button type="button" data-days="7" aria-pressed="true">7 days</button>',
-           '</div>',
-           "",
-           "_Need to shop for just part of the week? The "
-           "[grocery list](grocery-list.md) can be scoped to a single day or "
-           "even a single meal._", ""]
+           '  <button type="button" class="pp-plan-reset">Reset to default</button>',
+           '</div>', ""]
 
-    out.append("| Day | Protein anchor | Cooked veg | Salad | Extras |")
-    out.append("| --- | --- | --- | --- | --- |")
-    for d in plan.get("days", []):
+    # Editable plan as one card per day: stacked, full-width fields that read
+    # well on a phone and flow into 2-3 columns on wider screens. Raw HTML so
+    # the cards can hold <select> and carry the data-day-index the filter uses.
+    out.append('<div class="pp-planner" markdown="0">')
+    for i, d in enumerate(plan.get("days", [])):
+        day = d["day"]
         extras = ", ".join(name(x) for x in d.get("extras", []))
-        out.append(f"| {d['day']} | {name(d.get('protein',''))} | "
-                   f"{name(d.get('cooked_veg',''))} | {name(d.get('salad',''))} | {extras} |")
+        out.append(f'<div class="pp-day" data-day="{esc(day)}" data-day-index="{i}">')
+        out.append(f'<h3 class="pp-day__name">{esc(day)}</h3>')
+        out.append('<div class="pp-field"><label>Protein anchor</label>'
+                   + select("protein", day, d.get("protein", "")) + "</div>")
+        out.append('<div class="pp-field"><label>Cooked veg</label>'
+                   + select("cooked_veg", day, d.get("cooked_veg", "")) + "</div>")
+        out.append('<div class="pp-field"><label>Salad</label>'
+                   + select("salad", day, d.get("salad", "")) + "</div>")
+        if extras:
+            out.append('<p class="pp-day__extras"><span>Extras</span>'
+                       + esc(extras) + "</p>")
+        out.append("</div>")
+    out.append("</div>")
+    out.append("")
+    out.append("_Extras (drinks, dips, nuts) stay as the default accompaniments "
+               "and are included in the grocery list._")
     out.append("")
 
     out.append("## Cook once, eat through the week\n")
-    out.append("The plan above works because most of it is batch-prepped. "
-               "Number of batches to cook this week:\n")
+    out.append("Most of the default plan is batch-prepped. Batches to cook for "
+               "the starting week:\n")
     out.append("| Recipe | Batches | Keeps |")
     out.append("| --- | --- | --- |")
     for rid, n in sorted(plan.get("batches", {}).items(), key=lambda kv: name(kv[0])):

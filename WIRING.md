@@ -1,7 +1,7 @@
 # Wiring the website to the data
 
 The four content pages that used to be hand-maintained Markdown —
-**Recipes, Ingredients & Portions, 7-Day Meal Plan, Grocery List** — are now
+**Recipes, Ingredients & Portions, Meal Plan, Grocery List** — are now
 **generated at build time** from the YAML data layer. They are never committed,
 so the site cannot drift from the data. Narrative pages (Home, The Plate, Keto,
 About) stay as ordinary Markdown.

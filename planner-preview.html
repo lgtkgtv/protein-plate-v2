@@ -1,0 +1,684 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>ProteinPlate — planner preview</title><style>
+*{box-sizing:border-box} body{font:16px/1.5 system-ui,Segoe UI,Roboto,sans-serif;margin:0;color:#1b2a1b;background:#f6f8f6}
+.wrap{max-width:920px;margin:0 auto;padding:1.5rem} h1{color:#2e7d32}
+.pp-duration{display:flex;gap:.4rem;align-items:center;flex-wrap:wrap;margin:1rem 0}
+.pp-duration button{font:inherit;padding:.3rem .7rem;border:1px solid #2e7d32;background:#fff;color:#2e7d32;border-radius:.4rem;cursor:pointer}
+.pp-duration button[aria-pressed=true]{background:#2e7d32;color:#fff} .pp-plan-reset{margin-left:auto}
+.pp-planner{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.8rem;margin:1rem 0}
+.pp-day{border:1px solid #cfd8cf;border-radius:.6rem;padding:.75rem .85rem;background:#fff}
+.pp-day__name{margin:0 0 .5rem;font-size:.95rem;font-weight:700;color:#2e7d32}
+.pp-field{display:flex;flex-direction:column;gap:.15rem;margin-bottom:.55rem}
+.pp-field label{font-size:.68rem;letter-spacing:.04em;text-transform:uppercase;color:#5a6b5a}
+.pp-pick{width:100%;font:inherit;padding:.4rem .45rem;border-radius:.35rem;border:1px solid #bcccbc;background:#fff;color:#1b2a1b}
+.pp-day__extras{margin:.5rem 0 0;font-size:.8rem;color:#5a6b5a} .pp-day__extras span{display:block;font-size:.68rem;letter-spacing:.04em;text-transform:uppercase}
+.pp-scope{display:flex;gap:.5rem;align-items:center;margin:1rem 0} select{font:inherit;padding:.3rem .4rem;border:1px solid #bcccbc;border-radius:.35rem;max-width:100%}
+.pp-cart{display:flex;gap:.6rem;align-items:center;color:#456;margin:.5rem 0}.pp-cart__reset{font:inherit;cursor:pointer}
+.task-list{list-style:none;padding-left:0}.task-list-item{padding:.15rem 0}.pp-checked{opacity:.5;text-decoration:line-through}.pp-cat{margin:1rem 0 .25rem}
+table{border-collapse:collapse;width:100%;margin:1rem 0}th,td{border:1px solid #cfd8cf;padding:.45rem .6rem;text-align:left}th{background:#e8f0e8}
+.banner{background:#fff8e1;border:1px solid #f0d98a;border-radius:.5rem;padding:.8rem 1rem;margin-bottom:1rem}
+.tip{background:#e8f0e8;border-radius:.5rem;padding:.6rem .9rem;margin:1rem 0;font-size:.9rem}
+hr{border:none;border-top:2px dashed #cfd8cf;margin:2.5rem 0}
+</style></head>
+<body><div class="wrap">
+<div class="banner"><strong>Local preview.</strong> The planner running with no server, deploy, or cache. Each day is now a card; resize this window narrow (or open on a phone) to see it collapse to a single comfortable column.</div>
+<p class="tip">Tip: drag the window narrow to simulate a phone — the cards reflow from 2–3 columns down to one.</p>
+
+                
+                  
+
+
+
+<h1 id="build-your-meal-plan">Build Your Meal Plan<a class="headerlink" href="#build-your-meal-plan" title="Permanent link">&para;</a></h1>
+<p>A starting plan for a family of 4 — <strong>swap any meal from the dropdowns</strong> to make it yours. Your choices are saved on this device, and the <a href="../grocery-list/">grocery list</a> follows whatever plan you build.</p>
+<div class="pp-duration" role="group" aria-label="Plan length">
+  <span class="pp-duration__label">Show</span>
+  <button type="button" data-days="1">1 day</button>
+  <button type="button" data-days="3">3 days</button>
+  <button type="button" data-days="7" aria-pressed="true">7 days</button>
+  <button type="button" class="pp-plan-reset">Reset to default</button>
+</div>
+
+<div class="pp-planner" markdown="0">
+<div class="pp-day" data-day="Monday" data-day-index="0">
+<h3 class="pp-day__name">Monday</h3>
+<div class="pp-field"><label>Protein anchor</label><select class="pp-pick" data-day="Monday" data-slot="protein" data-default="chicken-tikka-tawa"><option value="besan-moong-cheela">Besan / moong cheela</option><option value="boiled-eggs">Boiled eggs</option><option value="chana-masala">Chana / chickpea masala</option><option value="chicken-tikka-tawa" selected>Chicken tikka on tawa</option><option value="chicken-veg-stirfry">Chicken-vegetable stir-fry</option><option value="egg-bhurji">Egg bhurji</option><option value="grilled-paneer-tawa">Grilled paneer on tawa</option><option value="moong-sprouts-usal">Moong sprouts usal</option><option value="paneer-bhurji">Paneer bhurji</option><option value="vegetable-omelette">Vegetable omelette</option></select></div>
+<div class="pp-field"><label>Cooked veg</label><select class="pp-pick" data-day="Monday" data-slot="cooked_veg" data-default="sauteed-mixed-vegetables"><option value="green-soup">Green soup</option><option value="sauteed-greens-bean-sabzi">Sauteed greens / bean sabzi</option><option value="sauteed-mixed-vegetables" selected>Sauteed mixed vegetables</option></select></div>
+<div class="pp-field"><label>Salad</label><select class="pp-pick" data-day="Monday" data-slot="salad" data-default="kachumber"><option value="big-leafy-salad">Big leafy salad</option><option value="curd-vegetable-raita">Curd vegetable salad / raita</option><option value="kachumber" selected>Kachumber salad</option></select></div>
+<p class="pp-day__extras"><span>Extras</span>Buttermilk (chaas), Toasted nuts &amp; seeds</p>
+</div>
+<div class="pp-day" data-day="Tuesday" data-day-index="1">
+<h3 class="pp-day__name">Tuesday</h3>
+<div class="pp-field"><label>Protein anchor</label><select class="pp-pick" data-day="Tuesday" data-slot="protein" data-default="paneer-bhurji"><option value="besan-moong-cheela">Besan / moong cheela</option><option value="boiled-eggs">Boiled eggs</option><option value="chana-masala">Chana / chickpea masala</option><option value="chicken-tikka-tawa">Chicken tikka on tawa</option><option value="chicken-veg-stirfry">Chicken-vegetable stir-fry</option><option value="egg-bhurji">Egg bhurji</option><option value="grilled-paneer-tawa">Grilled paneer on tawa</option><option value="moong-sprouts-usal">Moong sprouts usal</option><option value="paneer-bhurji" selected>Paneer bhurji</option><option value="vegetable-omelette">Vegetable omelette</option></select></div>
+<div class="pp-field"><label>Cooked veg</label><select class="pp-pick" data-day="Tuesday" data-slot="cooked_veg" data-default="sauteed-greens-bean-sabzi"><option value="green-soup">Green soup</option><option value="sauteed-greens-bean-sabzi" selected>Sauteed greens / bean sabzi</option><option value="sauteed-mixed-vegetables">Sauteed mixed vegetables</option></select></div>
+<div class="pp-field"><label>Salad</label><select class="pp-pick" data-day="Tuesday" data-slot="salad" data-default="big-leafy-salad"><option value="big-leafy-salad" selected>Big leafy salad</option><option value="curd-vegetable-raita">Curd vegetable salad / raita</option><option value="kachumber">Kachumber salad</option></select></div>
+<p class="pp-day__extras"><span>Extras</span>Green chutney, Toasted nuts &amp; seeds</p>
+</div>
+<div class="pp-day" data-day="Wednesday" data-day-index="2">
+<h3 class="pp-day__name">Wednesday</h3>
+<div class="pp-field"><label>Protein anchor</label><select class="pp-pick" data-day="Wednesday" data-slot="protein" data-default="egg-bhurji"><option value="besan-moong-cheela">Besan / moong cheela</option><option value="boiled-eggs">Boiled eggs</option><option value="chana-masala">Chana / chickpea masala</option><option value="chicken-tikka-tawa">Chicken tikka on tawa</option><option value="chicken-veg-stirfry">Chicken-vegetable stir-fry</option><option value="egg-bhurji" selected>Egg bhurji</option><option value="grilled-paneer-tawa">Grilled paneer on tawa</option><option value="moong-sprouts-usal">Moong sprouts usal</option><option value="paneer-bhurji">Paneer bhurji</option><option value="vegetable-omelette">Vegetable omelette</option></select></div>
+<div class="pp-field"><label>Cooked veg</label><select class="pp-pick" data-day="Wednesday" data-slot="cooked_veg" data-default="green-soup"><option value="green-soup" selected>Green soup</option><option value="sauteed-greens-bean-sabzi">Sauteed greens / bean sabzi</option><option value="sauteed-mixed-vegetables">Sauteed mixed vegetables</option></select></div>
+<div class="pp-field"><label>Salad</label><select class="pp-pick" data-day="Wednesday" data-slot="salad" data-default="curd-vegetable-raita"><option value="big-leafy-salad">Big leafy salad</option><option value="curd-vegetable-raita" selected>Curd vegetable salad / raita</option><option value="kachumber">Kachumber salad</option></select></div>
+<p class="pp-day__extras"><span>Extras</span>Toasted nuts &amp; seeds</p>
+</div>
+<div class="pp-day" data-day="Thursday" data-day-index="3">
+<h3 class="pp-day__name">Thursday</h3>
+<div class="pp-field"><label>Protein anchor</label><select class="pp-pick" data-day="Thursday" data-slot="protein" data-default="chana-masala"><option value="besan-moong-cheela">Besan / moong cheela</option><option value="boiled-eggs">Boiled eggs</option><option value="chana-masala" selected>Chana / chickpea masala</option><option value="chicken-tikka-tawa">Chicken tikka on tawa</option><option value="chicken-veg-stirfry">Chicken-vegetable stir-fry</option><option value="egg-bhurji">Egg bhurji</option><option value="grilled-paneer-tawa">Grilled paneer on tawa</option><option value="moong-sprouts-usal">Moong sprouts usal</option><option value="paneer-bhurji">Paneer bhurji</option><option value="vegetable-omelette">Vegetable omelette</option></select></div>
+<div class="pp-field"><label>Cooked veg</label><select class="pp-pick" data-day="Thursday" data-slot="cooked_veg" data-default="sauteed-mixed-vegetables"><option value="green-soup">Green soup</option><option value="sauteed-greens-bean-sabzi">Sauteed greens / bean sabzi</option><option value="sauteed-mixed-vegetables" selected>Sauteed mixed vegetables</option></select></div>
+<div class="pp-field"><label>Salad</label><select class="pp-pick" data-day="Thursday" data-slot="salad" data-default="kachumber"><option value="big-leafy-salad">Big leafy salad</option><option value="curd-vegetable-raita">Curd vegetable salad / raita</option><option value="kachumber" selected>Kachumber salad</option></select></div>
+<p class="pp-day__extras"><span>Extras</span>Buttermilk (chaas), Toasted nuts &amp; seeds</p>
+</div>
+<div class="pp-day" data-day="Friday" data-day-index="4">
+<h3 class="pp-day__name">Friday</h3>
+<div class="pp-field"><label>Protein anchor</label><select class="pp-pick" data-day="Friday" data-slot="protein" data-default="grilled-paneer-tawa"><option value="besan-moong-cheela">Besan / moong cheela</option><option value="boiled-eggs">Boiled eggs</option><option value="chana-masala">Chana / chickpea masala</option><option value="chicken-tikka-tawa">Chicken tikka on tawa</option><option value="chicken-veg-stirfry">Chicken-vegetable stir-fry</option><option value="egg-bhurji">Egg bhurji</option><option value="grilled-paneer-tawa" selected>Grilled paneer on tawa</option><option value="moong-sprouts-usal">Moong sprouts usal</option><option value="paneer-bhurji">Paneer bhurji</option><option value="vegetable-omelette">Vegetable omelette</option></select></div>
+<div class="pp-field"><label>Cooked veg</label><select class="pp-pick" data-day="Friday" data-slot="cooked_veg" data-default="sauteed-mixed-vegetables"><option value="green-soup">Green soup</option><option value="sauteed-greens-bean-sabzi">Sauteed greens / bean sabzi</option><option value="sauteed-mixed-vegetables" selected>Sauteed mixed vegetables</option></select></div>
+<div class="pp-field"><label>Salad</label><select class="pp-pick" data-day="Friday" data-slot="salad" data-default="big-leafy-salad"><option value="big-leafy-salad" selected>Big leafy salad</option><option value="curd-vegetable-raita">Curd vegetable salad / raita</option><option value="kachumber">Kachumber salad</option></select></div>
+<p class="pp-day__extras"><span>Extras</span>Hummus, Toasted nuts &amp; seeds</p>
+</div>
+<div class="pp-day" data-day="Saturday" data-day-index="5">
+<h3 class="pp-day__name">Saturday</h3>
+<div class="pp-field"><label>Protein anchor</label><select class="pp-pick" data-day="Saturday" data-slot="protein" data-default="chicken-veg-stirfry"><option value="besan-moong-cheela">Besan / moong cheela</option><option value="boiled-eggs">Boiled eggs</option><option value="chana-masala">Chana / chickpea masala</option><option value="chicken-tikka-tawa">Chicken tikka on tawa</option><option value="chicken-veg-stirfry" selected>Chicken-vegetable stir-fry</option><option value="egg-bhurji">Egg bhurji</option><option value="grilled-paneer-tawa">Grilled paneer on tawa</option><option value="moong-sprouts-usal">Moong sprouts usal</option><option value="paneer-bhurji">Paneer bhurji</option><option value="vegetable-omelette">Vegetable omelette</option></select></div>
+<div class="pp-field"><label>Cooked veg</label><select class="pp-pick" data-day="Saturday" data-slot="cooked_veg" data-default="green-soup"><option value="green-soup" selected>Green soup</option><option value="sauteed-greens-bean-sabzi">Sauteed greens / bean sabzi</option><option value="sauteed-mixed-vegetables">Sauteed mixed vegetables</option></select></div>
+<div class="pp-field"><label>Salad</label><select class="pp-pick" data-day="Saturday" data-slot="salad" data-default="curd-vegetable-raita"><option value="big-leafy-salad">Big leafy salad</option><option value="curd-vegetable-raita" selected>Curd vegetable salad / raita</option><option value="kachumber">Kachumber salad</option></select></div>
+<p class="pp-day__extras"><span>Extras</span>Buttermilk (chaas), Toasted nuts &amp; seeds</p>
+</div>
+<div class="pp-day" data-day="Sunday" data-day-index="6">
+<h3 class="pp-day__name">Sunday</h3>
+<div class="pp-field"><label>Protein anchor</label><select class="pp-pick" data-day="Sunday" data-slot="protein" data-default="moong-sprouts-usal"><option value="besan-moong-cheela">Besan / moong cheela</option><option value="boiled-eggs">Boiled eggs</option><option value="chana-masala">Chana / chickpea masala</option><option value="chicken-tikka-tawa">Chicken tikka on tawa</option><option value="chicken-veg-stirfry">Chicken-vegetable stir-fry</option><option value="egg-bhurji">Egg bhurji</option><option value="grilled-paneer-tawa">Grilled paneer on tawa</option><option value="moong-sprouts-usal" selected>Moong sprouts usal</option><option value="paneer-bhurji">Paneer bhurji</option><option value="vegetable-omelette">Vegetable omelette</option></select></div>
+<div class="pp-field"><label>Cooked veg</label><select class="pp-pick" data-day="Sunday" data-slot="cooked_veg" data-default="sauteed-greens-bean-sabzi"><option value="green-soup">Green soup</option><option value="sauteed-greens-bean-sabzi" selected>Sauteed greens / bean sabzi</option><option value="sauteed-mixed-vegetables">Sauteed mixed vegetables</option></select></div>
+<div class="pp-field"><label>Salad</label><select class="pp-pick" data-day="Sunday" data-slot="salad" data-default="big-leafy-salad"><option value="big-leafy-salad" selected>Big leafy salad</option><option value="curd-vegetable-raita">Curd vegetable salad / raita</option><option value="kachumber">Kachumber salad</option></select></div>
+<p class="pp-day__extras"><span>Extras</span>Besan / moong cheela, Green chutney, Toasted nuts &amp; seeds</p>
+</div>
+</div>
+
+<p><em>Extras (drinks, dips, nuts) stay as the default accompaniments and are included in the grocery list.</em></p>
+<h2 id="cook-once-eat-through-the-week">Cook once, eat through the week<a class="headerlink" href="#cook-once-eat-through-the-week" title="Permanent link">&para;</a></h2>
+<p>Most of the default plan is batch-prepped. Batches to cook for the starting week:</p>
+<table>
+<thead>
+<tr>
+<th>Recipe</th>
+<th>Batches</th>
+<th>Keeps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Besan / moong cheela</td>
+<td>2</td>
+<td>Cook fresh.</td>
+</tr>
+<tr>
+<td>Big leafy salad</td>
+<td>3</td>
+<td>Dress just before eating.</td>
+</tr>
+<tr>
+<td>Boiled eggs</td>
+<td>1</td>
+<td>Fridge 7 days · Keep in shell, fridge 5-7 days.</td>
+</tr>
+<tr>
+<td>Buttermilk (chaas)</td>
+<td>4</td>
+<td>Fridge 1 day</td>
+</tr>
+<tr>
+<td>Chana / chickpea masala</td>
+<td>1</td>
+<td>Fridge 5 days · Freeze 30 days</td>
+</tr>
+<tr>
+<td>Chicken tikka on tawa</td>
+<td>1</td>
+<td>Fridge 3 days · Freeze 30 days · Freeze raw in marinade up to 1 month (thaw overnight); cooked keeps 3 days.</td>
+</tr>
+<tr>
+<td>Chicken-vegetable stir-fry</td>
+<td>1</td>
+<td>Fridge 3 days</td>
+</tr>
+<tr>
+<td>Curd vegetable salad / raita</td>
+<td>3</td>
+<td>Fridge 1 day</td>
+</tr>
+<tr>
+<td>Egg bhurji</td>
+<td>1</td>
+<td>Fridge 2 days</td>
+</tr>
+<tr>
+<td>Green chutney</td>
+<td>1</td>
+<td>Fridge 4 days · Freeze 30 days · Freezes well in ice-cube trays.</td>
+</tr>
+<tr>
+<td>Green soup</td>
+<td>2</td>
+<td>Fridge 3 days · Freeze 30 days</td>
+</tr>
+<tr>
+<td>Grilled paneer on tawa</td>
+<td>1</td>
+<td>Cook fresh for best texture.</td>
+</tr>
+<tr>
+<td>Hummus</td>
+<td>1</td>
+<td>Fridge 5 days</td>
+</tr>
+<tr>
+<td>Kachumber salad</td>
+<td>4</td>
+<td>Eat fresh.</td>
+</tr>
+<tr>
+<td>Moong sprouts usal</td>
+<td>1</td>
+<td>Fridge 3 days</td>
+</tr>
+<tr>
+<td>Paneer bhurji</td>
+<td>1</td>
+<td>Fridge 2 days</td>
+</tr>
+<tr>
+<td>Sauteed greens / bean sabzi</td>
+<td>2</td>
+<td>Fridge 2 days</td>
+</tr>
+<tr>
+<td>Sauteed mixed vegetables</td>
+<td>3</td>
+<td>Fridge 2 days</td>
+</tr>
+<tr>
+<td>Toasted nuts &amp; seeds</td>
+<td>1</td>
+<td>Airtight jar, keeps for weeks.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              <hr>
+                
+                  
+
+
+
+<h1 id="grocery-list">Grocery List<a class="headerlink" href="#grocery-list" title="Permanent link">&para;</a></h1>
+<p>This list follows your <a href="../meal-plan/">meal plan</a>. Choose what to shop for — your whole plan, a single day, or just one meal — and tick things off as you go. Condiments and batch items (dips, nuts, chaas) count as one make-ahead batch, not once per day.</p>
+<div id="pp-grocery-app" markdown="0"></div>
+
+<div id="pp-grocery-fallback">
+<p><em>Showing the default week. Enable JavaScript to shop for a single day or meal from your own plan.</em></p>
+<p><strong>Vegetables, fruit &amp; herbs</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Bell pepper / capsicum — 9 piece</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Bottle gourd (lauki) — 2 piece</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Broccoli — 1.1 kg</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Cabbage — 400 g</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Cherry tomato — 300 g</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Coriander (fresh) — 2¼ cup + 2 handful</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Cucumber — 6½ piece</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Curry leaves — 1 sprig</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Garlic — 15 clove</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Ginger — 1 tsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Ginger-garlic paste — 5 tbsp  <em>(Buy a jar, or blend fresh ginger + garlic.)</em></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Green chilli — 6 piece</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Lemon / lime — 5 tbsp + 4½ piece</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Lettuce — 3 head</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Mint (fresh) — 8 tbsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Mushroom — 450 g</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Onion — 20½ piece</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Spinach — 500 g + 3 handful</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Tomato — 14½ piece</li>
+</ul>
+<p><strong>Proteins &amp; dairy</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Boiled chickpeas / chana — 4½ cup  <em>(Buy dry chana (cheapest) or canned chickpeas.)</em></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Boneless chicken — 1.6 kg</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Curd / yogurt — 6½ cup</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Eggs — 16 piece</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Moong sprouts — 3 cup  <em>(Buy dry green moong and sprout at home — sprouting ~triples the volume.)</em></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Paneer — 1 kg</li>
+</ul>
+<p><strong>Nuts &amp; seeds</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Almonds — 250 g</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Mixed nuts — 3 tbsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Mixed seeds — 6 tbsp  <em>(Pumpkin + sunflower + flax mix.)</em></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Pumpkin seeds — 200 g</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Sunflower seeds — 150 g</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Walnuts — 250 g</li>
+</ul>
+<p><strong>Flours &amp; dals</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Besan (gram flour) — 4¼ cup</li>
+</ul>
+<p><strong>Fats &amp; oils</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Cooking oil (groundnut/mustard) — ¾ cup</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Olive oil — 5 tbsp</li>
+</ul>
+<p><strong>Pantry &amp; spices</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Ajwain (carom seeds) — 1 tsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Amchur (dry mango powder) — ½ tsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Black pepper — 1 tsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Chaat masala — 1 tbsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Chilli flakes — 1 tsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Coriander powder — 1 tsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Cumin powder — 1½ tbsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Cumin seeds (jeera) — 2 tsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Garam masala — 1 tbsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Kashmiri chilli powder — 1½ tsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Kasuri methi (dried fenugreek) — 1½ tsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Mustard seeds — 2 tsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Red chilli powder — 2 tbsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Turmeric — 1 tbsp</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Salt — to taste / as needed</li>
+</ul>
+<p><strong>Condiments / other</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Tahini (sesame paste) — 2 tbsp</li>
+</ul>
+</div>
+<script type="application/json" id="pp-data">{"categories":[["produce","Vegetables, fruit & herbs"],["protein-dairy","Proteins & dairy"],["nuts-seeds","Nuts & seeds"],["flour","Flours & dals"],["fat-oil","Fats & oils"],["pantry-spice","Pantry & spices"],["condiment-other","Condiments / other"]],"recipes":{"besan-moong-cheela":{"name":"Besan / moong cheela","category":"binder","batch":false,"ings":[{"d":"Besan (gram flour)","c":"flour","note":"","b":480.0,"dim":"volume"},{"d":"Onion","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Tomato","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Bell pepper / capsicum","c":"produce","note":"","b":0.5,"dim":"count:piece"},{"d":"Coriander (fresh)","c":"produce","note":"","b":1,"dim":"count:handful"},{"d":"Green chilli","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Ajwain (carom seeds)","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Turmeric","c":"pantry-spice","note":"","b":1.25,"dim":"volume"},{"d":"Salt","c":"pantry-spice","note":"","taste":1},{"d":"Cooking oil (groundnut/mustard)","c":"fat-oil","note":"","b":10.0,"dim":"volume"}]},"big-leafy-salad":{"name":"Big leafy salad","category":"salad","batch":false,"ings":[{"d":"Lettuce","c":"produce","note":"","b":1,"dim":"count:head"},{"d":"Cabbage","c":"produce","note":"","b":100.0,"dim":"mass"},{"d":"Spinach","c":"produce","note":"","b":1,"dim":"count:handful"},{"d":"Broccoli","c":"produce","note":"","b":100.0,"dim":"mass"},{"d":"Bell pepper / capsicum","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Cherry tomato","c":"produce","note":"","b":100.0,"dim":"mass"},{"d":"Mixed seeds","c":"nuts-seeds","note":"Pumpkin + sunflower + flax mix.","b":15.0,"dim":"volume"},{"d":"Mixed nuts","c":"nuts-seeds","note":"","b":15.0,"dim":"volume"},{"d":"Lemon / lime","c":"produce","note":"","b":0.5,"dim":"count:piece"},{"d":"Olive oil","c":"fat-oil","note":"","b":15.0,"dim":"volume"}]},"boiled-eggs":{"name":"Boiled eggs","category":"protein-anchor","batch":false,"ings":[{"d":"Eggs","c":"protein-dairy","note":"","b":8,"dim":"count:piece"}]},"buttermilk-chaas":{"name":"Buttermilk (chaas)","category":"condiment","batch":false,"ings":[{"d":"Curd / yogurt","c":"protein-dairy","note":"","b":120.0,"dim":"volume"},{"d":"Cumin powder","c":"pantry-spice","note":"","b":1.25,"dim":"volume"},{"d":"Salt","c":"pantry-spice","note":"","taste":1},{"d":"Coriander (fresh)","c":"produce","note":"","b":15.0,"dim":"volume"}]},"chana-masala":{"name":"Chana / chickpea masala","category":"protein-anchor","batch":false,"ings":[{"d":"Boiled chickpeas / chana","c":"protein-dairy","note":"Buy dry chana (cheapest) or canned chickpeas.","b":720.0,"dim":"volume"},{"d":"Onion","c":"produce","note":"","b":2,"dim":"count:piece"},{"d":"Tomato","c":"produce","note":"","b":2,"dim":"count:piece"},{"d":"Ginger-garlic paste","c":"produce","note":"Buy a jar, or blend fresh ginger + garlic.","b":15.0,"dim":"volume"},{"d":"Turmeric","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Red chilli powder","c":"pantry-spice","note":"","b":5.0,"dim":"volume"},{"d":"Coriander powder","c":"pantry-spice","note":"","b":5.0,"dim":"volume"},{"d":"Cumin powder","c":"pantry-spice","note":"","b":5.0,"dim":"volume"},{"d":"Garam masala","c":"pantry-spice","note":"","b":5.0,"dim":"volume"},{"d":"Amchur (dry mango powder)","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Cooking oil (groundnut/mustard)","c":"fat-oil","note":"","b":30.0,"dim":"volume"},{"d":"Salt","c":"pantry-spice","note":"","taste":1},{"d":"Coriander (fresh)","c":"produce","note":"","b":30.0,"dim":"volume"}]},"chicken-tikka-tawa":{"name":"Chicken tikka on tawa","category":"protein-anchor","batch":false,"ings":[{"d":"Boneless chicken","c":"protein-dairy","note":"","b":900.0,"dim":"mass"},{"d":"Curd / yogurt","c":"protein-dairy","note":"","b":180.0,"dim":"volume"},{"d":"Ginger-garlic paste","c":"produce","note":"Buy a jar, or blend fresh ginger + garlic.","b":22.5,"dim":"volume"},{"d":"Lemon / lime","c":"produce","note":"","b":30.0,"dim":"volume"},{"d":"Kashmiri chilli powder","c":"pantry-spice","note":"","b":7.5,"dim":"volume"},{"d":"Turmeric","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Garam masala","c":"pantry-spice","note":"","b":5.0,"dim":"volume"},{"d":"Chaat masala","c":"pantry-spice","note":"","b":5.0,"dim":"volume"},{"d":"Kasuri methi (dried fenugreek)","c":"pantry-spice","note":"","b":5.0,"dim":"volume"},{"d":"Besan (gram flour)","c":"flour","note":"","b":30.0,"dim":"volume"},{"d":"Cooking oil (groundnut/mustard)","c":"fat-oil","note":"","b":15.0,"dim":"volume"},{"d":"Salt","c":"pantry-spice","note":"","taste":1}]},"chicken-veg-stirfry":{"name":"Chicken-vegetable stir-fry","category":"protein-anchor","batch":false,"ings":[{"d":"Boneless chicken","c":"protein-dairy","note":"","b":700.0,"dim":"mass"},{"d":"Broccoli","c":"produce","note":"","b":200.0,"dim":"mass"},{"d":"Bell pepper / capsicum","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Cabbage","c":"produce","note":"","b":100.0,"dim":"mass"},{"d":"Onion","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Cucumber","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Ginger-garlic paste","c":"produce","note":"Buy a jar, or blend fresh ginger + garlic.","b":15.0,"dim":"volume"},{"d":"Black pepper","c":"pantry-spice","note":"","b":5.0,"dim":"volume"},{"d":"Chilli flakes","c":"pantry-spice","note":"","b":5.0,"dim":"volume"},{"d":"Cooking oil (groundnut/mustard)","c":"fat-oil","note":"","b":15.0,"dim":"volume"},{"d":"Salt","c":"pantry-spice","note":"","taste":1}]},"curd-vegetable-raita":{"name":"Curd vegetable salad / raita","category":"salad","batch":false,"ings":[{"d":"Curd / yogurt","c":"protein-dairy","note":"","b":240.0,"dim":"volume"},{"d":"Tomato","c":"produce","note":"","b":0.5,"dim":"count:piece"},{"d":"Cucumber","c":"produce","note":"","b":0.5,"dim":"count:piece"},{"d":"Onion","c":"produce","note":"","b":0.5,"dim":"count:piece"},{"d":"Cumin powder","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Salt","c":"pantry-spice","note":"","taste":1},{"d":"Coriander (fresh)","c":"produce","note":"","b":15.0,"dim":"volume"}]},"egg-bhurji":{"name":"Egg bhurji","category":"protein-anchor","batch":false,"ings":[{"d":"Eggs","c":"protein-dairy","note":"","b":8,"dim":"count:piece"},{"d":"Onion","c":"produce","note":"","b":2,"dim":"count:piece"},{"d":"Tomato","c":"produce","note":"","b":2,"dim":"count:piece"},{"d":"Green chilli","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Ginger-garlic paste","c":"produce","note":"Buy a jar, or blend fresh ginger + garlic.","b":5.0,"dim":"volume"},{"d":"Turmeric","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Red chilli powder","c":"pantry-spice","note":"","b":5.0,"dim":"volume"},{"d":"Garam masala","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Cooking oil (groundnut/mustard)","c":"fat-oil","note":"","b":15.0,"dim":"volume"},{"d":"Salt","c":"pantry-spice","note":"","taste":1},{"d":"Coriander (fresh)","c":"produce","note":"","b":30.0,"dim":"volume"}]},"green-chutney":{"name":"Green chutney","category":"condiment","batch":false,"ings":[{"d":"Coriander (fresh)","c":"produce","note":"","b":240.0,"dim":"volume"},{"d":"Mint (fresh)","c":"produce","note":"","b":120.0,"dim":"volume"},{"d":"Green chilli","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Ginger","c":"produce","note":"","b":5.0,"dim":"volume"},{"d":"Lemon / lime","c":"produce","note":"","b":0.5,"dim":"count:piece"},{"d":"Salt","c":"pantry-spice","note":"","taste":1}]},"green-soup":{"name":"Green soup","category":"side","batch":false,"ings":[{"d":"Bottle gourd (lauki)","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Onion","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Garlic","c":"produce","note":"","b":2,"dim":"count:clove"},{"d":"Black pepper","c":"pantry-spice","note":"","taste":1},{"d":"Salt","c":"pantry-spice","note":"","taste":1},{"d":"Curd / yogurt","c":"protein-dairy","note":"","b":15.0,"dim":"volume"}]},"grilled-paneer-tawa":{"name":"Grilled paneer on tawa","category":"protein-anchor","batch":false,"ings":[{"d":"Paneer","c":"protein-dairy","note":"","b":500.0,"dim":"mass"},{"d":"Curd / yogurt","c":"protein-dairy","note":"","b":120.0,"dim":"volume"},{"d":"Red chilli powder","c":"pantry-spice","note":"","b":5.0,"dim":"volume"},{"d":"Turmeric","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Garam masala","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Chaat masala","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Kasuri methi (dried fenugreek)","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Besan (gram flour)","c":"flour","note":"","b":10.0,"dim":"volume"},{"d":"Lemon / lime","c":"produce","note":"","b":15.0,"dim":"volume"},{"d":"Ginger-garlic paste","c":"produce","note":"Buy a jar, or blend fresh ginger + garlic.","b":5.0,"dim":"volume"},{"d":"Cooking oil (groundnut/mustard)","c":"fat-oil","note":"","b":5.0,"dim":"volume"},{"d":"Salt","c":"pantry-spice","note":"","taste":1}]},"hummus":{"name":"Hummus","category":"condiment","batch":false,"ings":[{"d":"Boiled chickpeas / chana","c":"protein-dairy","note":"Buy dry chana (cheapest) or canned chickpeas.","b":360.0,"dim":"volume"},{"d":"Tahini (sesame paste)","c":"condiment-other","note":"","b":30.0,"dim":"volume"},{"d":"Garlic","c":"produce","note":"","b":1,"dim":"count:clove"},{"d":"Lemon / lime","c":"produce","note":"","b":30.0,"dim":"volume"},{"d":"Olive oil","c":"fat-oil","note":"","b":30.0,"dim":"volume"},{"d":"Cumin powder","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Salt","c":"pantry-spice","note":"","taste":1}]},"kachumber":{"name":"Kachumber salad","category":"salad","batch":false,"ings":[{"d":"Tomato","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Cucumber","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Onion","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Coriander (fresh)","c":"produce","note":"","b":15.0,"dim":"volume"},{"d":"Lemon / lime","c":"produce","note":"","b":0.5,"dim":"count:piece"},{"d":"Chaat masala","c":"pantry-spice","note":"","b":2.5,"dim":"volume"}]},"moong-sprouts-usal":{"name":"Moong sprouts usal","category":"protein-anchor","batch":false,"ings":[{"d":"Moong sprouts","c":"protein-dairy","note":"Buy dry green moong and sprout at home — sprouting ~triples the volume.","b":720.0,"dim":"volume"},{"d":"Onion","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Tomato","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Ginger-garlic paste","c":"produce","note":"Buy a jar, or blend fresh ginger + garlic.","b":5.0,"dim":"volume"},{"d":"Green chilli","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Mustard seeds","c":"pantry-spice","note":"","b":5.0,"dim":"volume"},{"d":"Cumin seeds (jeera)","c":"pantry-spice","note":"","b":5.0,"dim":"volume"},{"d":"Turmeric","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Red chilli powder","c":"pantry-spice","note":"","b":5.0,"dim":"volume"},{"d":"Curry leaves","c":"produce","note":"","b":1,"dim":"count:sprig"},{"d":"Cooking oil (groundnut/mustard)","c":"fat-oil","note":"","b":15.0,"dim":"volume"},{"d":"Salt","c":"pantry-spice","note":"","taste":1},{"d":"Coriander (fresh)","c":"produce","note":"","b":30.0,"dim":"volume"},{"d":"Lemon / lime","c":"produce","note":"","b":0.5,"dim":"count:piece"}]},"paneer-bhurji":{"name":"Paneer bhurji","category":"protein-anchor","batch":false,"ings":[{"d":"Paneer","c":"protein-dairy","note":"","b":500.0,"dim":"mass"},{"d":"Onion","c":"produce","note":"","b":2,"dim":"count:piece"},{"d":"Tomato","c":"produce","note":"","b":2,"dim":"count:piece"},{"d":"Bell pepper / capsicum","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Green chilli","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Ginger-garlic paste","c":"produce","note":"Buy a jar, or blend fresh ginger + garlic.","b":5.0,"dim":"volume"},{"d":"Turmeric","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Red chilli powder","c":"pantry-spice","note":"","b":5.0,"dim":"volume"},{"d":"Garam masala","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Cooking oil (groundnut/mustard)","c":"fat-oil","note":"","b":15.0,"dim":"volume"},{"d":"Salt","c":"pantry-spice","note":"","taste":1},{"d":"Coriander (fresh)","c":"produce","note":"","b":30.0,"dim":"volume"}]},"sauteed-greens-bean-sabzi":{"name":"Sauteed greens / bean sabzi","category":"side","batch":false,"ings":[{"d":"Spinach","c":"produce","note":"","b":250.0,"dim":"mass"},{"d":"Garlic","c":"produce","note":"","b":2,"dim":"count:clove"},{"d":"Red chilli powder","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Mustard seeds","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Cumin seeds (jeera)","c":"pantry-spice","note":"","b":2.5,"dim":"volume"},{"d":"Cooking oil (groundnut/mustard)","c":"fat-oil","note":"","b":15.0,"dim":"volume"},{"d":"Salt","c":"pantry-spice","note":"","taste":1}]},"sauteed-mixed-vegetables":{"name":"Sauteed mixed vegetables","category":"side","batch":false,"ings":[{"d":"Broccoli","c":"produce","note":"","b":200.0,"dim":"mass"},{"d":"Bell pepper / capsicum","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Mushroom","c":"produce","note":"","b":150.0,"dim":"mass"},{"d":"Onion","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Garlic","c":"produce","note":"","b":2,"dim":"count:clove"},{"d":"Mixed seeds","c":"nuts-seeds","note":"Pumpkin + sunflower + flax mix.","b":15.0,"dim":"volume"},{"d":"Cooking oil (groundnut/mustard)","c":"fat-oil","note":"","b":15.0,"dim":"volume"},{"d":"Salt","c":"pantry-spice","note":"","taste":1}]},"toasted-nuts-seeds":{"name":"Toasted nuts & seeds","category":"condiment","batch":true,"ings":[{"d":"Almonds","c":"nuts-seeds","note":"","b":250.0,"dim":"mass"},{"d":"Walnuts","c":"nuts-seeds","note":"","b":250.0,"dim":"mass"},{"d":"Pumpkin seeds","c":"nuts-seeds","note":"","b":200.0,"dim":"mass"},{"d":"Sunflower seeds","c":"nuts-seeds","note":"","b":150.0,"dim":"mass"}]},"vegetable-omelette":{"name":"Vegetable omelette","category":"protein-anchor","batch":false,"ings":[{"d":"Eggs","c":"protein-dairy","note":"","b":8,"dim":"count:piece"},{"d":"Onion","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Tomato","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Bell pepper / capsicum","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Spinach","c":"produce","note":"","b":1,"dim":"count:handful"},{"d":"Green chilli","c":"produce","note":"","b":1,"dim":"count:piece"},{"d":"Turmeric","c":"pantry-spice","note":"","b":1.25,"dim":"volume"},{"d":"Salt","c":"pantry-spice","note":"","taste":1},{"d":"Ghee","c":"fat-oil","note":"","b":2.5,"dim":"volume"}]}},"options":{"protein":[["besan-moong-cheela","Besan / moong cheela"],["boiled-eggs","Boiled eggs"],["chana-masala","Chana / chickpea masala"],["chicken-tikka-tawa","Chicken tikka on tawa"],["chicken-veg-stirfry","Chicken-vegetable stir-fry"],["egg-bhurji","Egg bhurji"],["grilled-paneer-tawa","Grilled paneer on tawa"],["moong-sprouts-usal","Moong sprouts usal"],["paneer-bhurji","Paneer bhurji"],["vegetable-omelette","Vegetable omelette"]],"cooked_veg":[["green-soup","Green soup"],["sauteed-greens-bean-sabzi","Sauteed greens / bean sabzi"],["sauteed-mixed-vegetables","Sauteed mixed vegetables"]],"salad":[["big-leafy-salad","Big leafy salad"],["curd-vegetable-raita","Curd vegetable salad / raita"],["kachumber","Kachumber salad"]]},"defaultPlan":[{"day":"Monday","protein":"chicken-tikka-tawa","cooked_veg":"sauteed-mixed-vegetables","salad":"kachumber","extras":["buttermilk-chaas","toasted-nuts-seeds"]},{"day":"Tuesday","protein":"paneer-bhurji","cooked_veg":"sauteed-greens-bean-sabzi","salad":"big-leafy-salad","extras":["green-chutney","toasted-nuts-seeds"]},{"day":"Wednesday","protein":"egg-bhurji","cooked_veg":"green-soup","salad":"curd-vegetable-raita","extras":["toasted-nuts-seeds"]},{"day":"Thursday","protein":"chana-masala","cooked_veg":"sauteed-mixed-vegetables","salad":"kachumber","extras":["buttermilk-chaas","toasted-nuts-seeds"]},{"day":"Friday","protein":"grilled-paneer-tawa","cooked_veg":"sauteed-mixed-vegetables","salad":"big-leafy-salad","extras":["hummus","toasted-nuts-seeds"]},{"day":"Saturday","protein":"chicken-veg-stirfry","cooked_veg":"green-soup","salad":"curd-vegetable-raita","extras":["buttermilk-chaas","toasted-nuts-seeds"]},{"day":"Sunday","protein":"moong-sprouts-usal","cooked_veg":"sauteed-greens-bean-sabzi","salad":"big-leafy-salad","extras":["besan-moong-cheela","green-chutney","toasted-nuts-seeds"]}]}</script>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </div>
+<script>/* Shared grocery aggregation — used by the browser (grocery.js) and by a Node
+ * parity test that checks it against the Python aggregator. Pure functions, no
+ * DOM. The unit rendering tiers mirror proteinplate/units.py, which remains the
+ * canonical spec (its Python tests + the Node parity test guard against drift).
+ */
+(function (root, factory) {
+  if (typeof module === "object" && module.exports) module.exports = factory();
+  else root.PPGrocery = factory();
+})(typeof self !== "undefined" ? self : this, function () {
+  "use strict";
+
+  var FRACTIONS = [
+    [0.25, "\u00BC"], [0.5, "\u00BD"], [0.75, "\u00BE"],
+    [0.3333, "\u2153"], [0.6667, "\u2154"]
+  ];
+
+  function format(x) {
+    if (!isFinite(x)) return "";
+    var whole = Math.floor(x + 1e-9);
+    var frac = x - whole;
+    for (var i = 0; i < FRACTIONS.length; i++) {
+      if (Math.abs(frac - FRACTIONS[i][0]) < 0.04) {
+        return (whole ? whole : "") + FRACTIONS[i][1];
+      }
+    }
+    if (frac < 0.04) return String(whole);
+    return String(Math.round(x * 100) / 100);
+  }
+
+  function roundTo(x, step) { return Math.round(x / step) * step; }
+
+  function renderMass(g) {
+    if (g >= 1000) return [roundTo(g / 1000, 0.1), "kg"];
+    return [roundTo(g, 5), "g"];
+  }
+  function renderVolume(ml) {
+    if (ml >= 2000) return [roundTo(ml / 1000, 0.1), "l"];
+    if (ml >= 180) return [roundTo(ml / 240, 0.25), "cup"];
+    if (ml >= 15) return [roundTo(ml / 15, 0.5), "tbsp"];
+    return [roundTo(ml / 5, 0.5), "tsp"];
+  }
+
+  // counts: { recipeId: multiplier }. Returns grouped categories with items.
+  function aggregate(counts, dataObj) {
+    var recipes = dataObj.recipes;
+    var acc = {};
+    Object.keys(counts).forEach(function (rid) {
+      var c = counts[rid];
+      var rec = recipes[rid];
+      if (!rec || !c) return;
+      rec.ings.forEach(function (ig) {
+        var key = ig.c + "||" + ig.d;
+        var a = acc[key] || (acc[key] = {
+          cat: ig.c, display: ig.d, note: "",
+          mass: 0, vol: 0, haveMass: false, haveVol: false,
+          counts: {}, taste: false
+        });
+        if (ig.note) a.note = ig.note;
+        if (ig.taste) { a.taste = true; return; }
+        if (ig.dim === "mass") { a.mass += ig.b * c; a.haveMass = true; }
+        else if (ig.dim === "volume") { a.vol += ig.b * c; a.haveVol = true; }
+        else { a.counts[ig.dim] = (a.counts[ig.dim] || 0) + ig.b * c; }
+      });
+    });
+
+    Object.keys(acc).forEach(function (key) {
+      var a = acc[key];
+      var parts = [];
+      if (a.haveMass) parts.push(renderMass(a.mass));
+      if (a.haveVol) parts.push(renderVolume(a.vol));
+      Object.keys(a.counts).sort().forEach(function (dim) {
+        parts.push([a.counts[dim], dim.split(":")[1]]);
+      });
+      a.parts = parts;  // raw [qty, unit] pairs (used by the parity test)
+      a.amount = parts.length
+        ? parts.map(function (p) { return format(p[0]) + " " + p[1]; }).join(" + ")
+        : "to taste / as needed";
+    });
+
+    var byCat = {};
+    Object.keys(acc).forEach(function (k) {
+      (byCat[acc[k].cat] = byCat[acc[k].cat] || []).push(acc[k]);
+    });
+    var result = [];
+    dataObj.categories.forEach(function (pair) {
+      var cat = pair[0], heading = pair[1];
+      var items = (byCat[cat] || []).sort(function (x, y) {
+        return x.display < y.display ? -1 : x.display > y.display ? 1 : 0;
+      });
+      if (items.length) result.push({ cat: cat, heading: heading, items: items });
+    });
+    return result;
+  }
+
+  // Build a {recipe: count} map for a scope over a plan.
+  // scope: "all" | a day name | "meal:<recipeId>".
+  // Condiments and batch items count once (made ahead), mains count per day.
+  function planCounts(plan, dataObj, scope) {
+    var recipes = dataObj.recipes;
+    if (scope && scope.indexOf("meal:") === 0) {
+      var m = {}; m[scope.slice(5)] = 1; return m;
+    }
+    function dayIds(d) {
+      return [d.protein, d.cooked_veg, d.salad]
+        .concat(d.extras || []).filter(Boolean);
+    }
+    if (scope && scope !== "all") {                 // a single day
+      var counts = {};
+      plan.forEach(function (d) {
+        if (d.day === scope) dayIds(d).forEach(function (rid) {
+          counts[rid] = (counts[rid] || 0) + 1;
+        });
+      });
+      return counts;
+    }
+    // whole plan
+    var appears = {};
+    plan.forEach(function (d) {
+      dayIds(d).forEach(function (rid) { appears[rid] = (appears[rid] || 0) + 1; });
+    });
+    var out = {};
+    Object.keys(appears).forEach(function (rid) {
+      var rec = recipes[rid];
+      var once = rec && (rec.batch || rec.category === "condiment");
+      out[rid] = once ? 1 : appears[rid];
+    });
+    return out;
+  }
+
+  return { format: format, aggregate: aggregate, planCounts: planCounts };
+});
+</script><script>/* Configurable meal plan.
+ *
+ * The per-day dropdowns are the plan. This script saves the chosen meals to
+ * localStorage (key "pp-plan") so they persist and so the grocery list can read
+ * them, restores them on load, resets to the defaults, and filters the table to
+ * 1 / 3 / 7 days. The defaults are the values rendered by the server.
+ */
+(function () {
+  "use strict";
+  var KEY = "pp-plan";
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || {}; }
+    catch (e) { return {}; }
+  }
+  function save(plan) {
+    try { localStorage.setItem(KEY, JSON.stringify(plan)); } catch (e) {}
+  }
+
+  function init() {
+    var picks = Array.prototype.slice.call(document.querySelectorAll(".pp-pick"));
+    var duration = document.querySelector(".pp-duration");
+    if (!picks.length && !duration) return;
+
+    // Restore saved choices into the dropdowns.
+    var plan = load();
+    picks.forEach(function (sel) {
+      var day = sel.dataset.day, slot = sel.dataset.slot;
+      if (plan[day] && plan[day][slot]) sel.value = plan[day][slot];
+      sel.addEventListener("change", function () {
+        var p = load();
+        p[day] = p[day] || {};
+        p[day][slot] = sel.value;
+        save(p);
+      });
+    });
+
+    // Duration filter (1 / 3 / 7 days).
+    var rows = Array.prototype.slice.call(
+      document.querySelectorAll("[data-day-index]"));
+    function applyDays(n) {
+      rows.forEach(function (row, i) { row.style.display = i < n ? "" : "none"; });
+    }
+    if (duration) {
+      duration.addEventListener("click", function (e) {
+        var days = e.target.closest("button[data-days]");
+        if (days) {
+          duration.querySelectorAll("button[data-days]").forEach(function (b) {
+            b.setAttribute("aria-pressed", b === days ? "true" : "false");
+          });
+          applyDays(parseInt(days.dataset.days, 10));
+          return;
+        }
+        if (e.target.closest(".pp-plan-reset")) {
+          picks.forEach(function (sel) { sel.value = sel.dataset.default; });
+          try { localStorage.removeItem(KEY); } catch (er) {}
+        }
+      });
+    }
+  }
+
+  if (window.document$ && typeof window.document$.subscribe === "function") {
+    window.document$.subscribe(init);
+  } else {
+    document.addEventListener("DOMContentLoaded", init);
+  }
+})();
+</script><script>/* Dynamic grocery list.
+ *
+ * Reads the embedded recipe data (#pp-data) and the saved plan ("pp-plan"),
+ * lets you scope to the whole plan / a single day / a single meal, and renders
+ * the list with the shared core (grocery-core.js, parity-tested against Python).
+ * Checkboxes persist per scope; a toolbar shows basket progress. Falls back to
+ * the server-rendered week list if anything is missing.
+ */
+(function () {
+  "use strict";
+  var PLAN_KEY = "pp-plan";
+
+  function readData() {
+    var el = document.getElementById("pp-data");
+    if (!el) return null;
+    try { return JSON.parse(el.textContent); } catch (e) { return null; }
+  }
+  function effectivePlan(data) {
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(PLAN_KEY)) || {}; } catch (e) {}
+    return data.defaultPlan.map(function (d) {
+      var s = saved[d.day] || {};
+      return {
+        day: d.day,
+        protein: s.protein || d.protein,
+        cooked_veg: s.cooked_veg || d.cooked_veg,
+        salad: s.salad || d.salad,
+        extras: d.extras || []
+      };
+    });
+  }
+
+  function checkKey(scope, label) {
+    return "pp-check:" + location.pathname + "|" + scope + "|" + label;
+  }
+  function getChecked(k) { try { return localStorage.getItem(k) === "1"; } catch (e) { return false; } }
+  function setChecked(k, on) {
+    try { on ? localStorage.setItem(k, "1") : localStorage.removeItem(k); } catch (e) {}
+  }
+
+  function init() {
+    var app = document.getElementById("pp-grocery-app");
+    var data = readData();
+    if (!app || !data || !window.PPGrocery) return;       // keep the fallback
+
+    var fallback = document.getElementById("pp-grocery-fallback");
+    if (fallback) fallback.hidden = true;
+
+    var plan = effectivePlan(data);
+
+    // Build the scope selector: whole plan, each day, each single meal.
+    var select = document.createElement("select");
+    select.id = "pp-scope-select";
+    select.className = "pp-scope__select";
+    select.appendChild(opt("all", "My whole plan"));
+    var gDays = group("A single day");
+    plan.forEach(function (d) { gDays.appendChild(opt(d.day, d.day)); });
+    select.appendChild(gDays);
+    var gMeals = group("A single meal");
+    Object.keys(data.recipes)
+      .sort(function (a, b) { return data.recipes[a].name < data.recipes[b].name ? -1 : 1; })
+      .forEach(function (rid) { gMeals.appendChild(opt("meal:" + rid, data.recipes[rid].name)); });
+    select.appendChild(gMeals);
+
+    var bar = document.createElement("div");
+    bar.className = "pp-scope";
+    var lbl = document.createElement("label");
+    lbl.setAttribute("for", "pp-scope-select");
+    lbl.textContent = "Shopping for";
+    bar.appendChild(lbl);
+    bar.appendChild(select);
+
+    var cart = document.createElement("div");
+    cart.className = "pp-cart";
+    var count = document.createElement("span");
+    count.className = "pp-cart__count";
+    var reset = document.createElement("button");
+    reset.type = "button";
+    reset.className = "pp-cart__reset";
+    reset.textContent = "Reset";
+    cart.appendChild(count);
+    cart.appendChild(reset);
+
+    var listEl = document.createElement("div");
+    listEl.className = "pp-scope-list";
+
+    app.innerHTML = "";
+    app.appendChild(bar);
+    app.appendChild(cart);
+    app.appendChild(listEl);
+
+    var boxes = [];
+
+    function refresh() {
+      var done = boxes.filter(function (b) { return b.input.checked; }).length;
+      count.textContent = done + " / " + boxes.length + " in the basket";
+    }
+
+    function render(scope) {
+      var counts = window.PPGrocery.planCounts(plan, data, scope);
+      var groups = window.PPGrocery.aggregate(counts, data);
+      listEl.innerHTML = "";
+      boxes = [];
+      if (!groups.length) {
+        listEl.innerHTML = "<p>Nothing to shop for in this selection.</p>";
+        refresh();
+        return;
+      }
+      groups.forEach(function (g) {
+        var h = document.createElement("p");
+        h.className = "pp-cat";
+        h.innerHTML = "<strong>" + g.heading + "</strong>";
+        listEl.appendChild(h);
+        var ul = document.createElement("ul");
+        ul.className = "task-list";
+        g.items.forEach(function (it) {
+          var li = document.createElement("li");
+          li.className = "task-list-item";
+          var label = document.createElement("label");
+          var input = document.createElement("input");
+          input.type = "checkbox";
+          input.className = "task-list-control";
+          var k = checkKey(scope, it.display);
+          if (getChecked(k)) { input.checked = true; li.classList.add("pp-checked"); }
+          input.addEventListener("change", function () {
+            setChecked(k, input.checked);
+            li.classList.toggle("pp-checked", input.checked);
+            refresh();
+          });
+          var note = it.note ? '  <em>(' + it.note + ")</em>" : "";
+          label.appendChild(input);
+          label.insertAdjacentHTML("beforeend",
+            " " + it.display + " \u2014 " + it.amount + note);
+          li.appendChild(label);
+          ul.appendChild(li);
+          boxes.push({ input: input });
+        });
+        listEl.appendChild(ul);
+      });
+      refresh();
+    }
+
+    select.addEventListener("change", function () { render(select.value); });
+    reset.addEventListener("click", function () {
+      boxes.forEach(function (b) { b.input.checked = false; });
+      var scope = select.value;
+      // clear stored ticks for the visible items
+      Array.prototype.slice.call(listEl.querySelectorAll(".task-list-item"))
+        .forEach(function (li) {
+          var txt = (li.textContent || "").trim();
+          var dash = txt.indexOf("\u2014");
+          var name = (dash > 0 ? txt.slice(0, dash) : txt).trim();
+          setChecked(checkKey(scope, name), false);
+          li.classList.remove("pp-checked");
+        });
+      refresh();
+    });
+
+    render("all");
+
+    function opt(v, t) { var o = document.createElement("option"); o.value = v; o.textContent = t; return o; }
+    function group(t) { var g = document.createElement("optgroup"); g.label = t; return g; }
+  }
+
+  if (window.document$ && typeof window.document$.subscribe === "function") {
+    window.document$.subscribe(init);
+  } else {
+    document.addEventListener("DOMContentLoaded", init);
+  }
+})();
+</script>
+</body></html>

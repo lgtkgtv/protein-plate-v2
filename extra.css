@@ -42,3 +42,141 @@
   font-variant-numeric: tabular-nums;
   border-bottom: 1px dotted var(--md-default-fg-color--lighter);
 }
+
+/* Persistent grocery checklist */
+.pp-cart {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.5rem 0 1rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.5rem;
+  background: var(--md-code-bg-color);
+}
+
+.pp-cart__count {
+  font-weight: 600;
+}
+
+.pp-cart__reset {
+  font: inherit;
+  cursor: pointer;
+  margin-left: auto;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background: transparent;
+  color: var(--md-default-fg-color);
+  border-radius: 1rem;
+  padding: 0.1rem 0.8rem;
+}
+
+.pp-cart__reset:hover {
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-fg-color);
+}
+
+/* Checked-off items: muted + struck through */
+.task-list-item.pp-checked {
+  color: var(--md-default-fg-color--light);
+  text-decoration: line-through;
+  text-decoration-color: var(--md-default-fg-color--lighter);
+}
+
+/* Grocery scope selector */
+.pp-scope {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 1rem;
+}
+.pp-scope label { font-weight: 600; }
+.pp-scope__select {
+  font: inherit;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  max-width: 100%;
+}
+
+/* Meal-plan duration control (same look as the servings control) */
+.pp-duration {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 0.75rem;
+}
+.pp-duration__label { font-weight: 600; margin-right: 0.3rem; }
+.pp-duration button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background: transparent;
+  color: var(--md-default-fg-color);
+  border-radius: 1rem;
+  padding: 0.15rem 0.85rem;
+}
+.pp-duration button[aria-pressed="true"] {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  border-color: var(--md-primary-fg-color);
+}
+
+/* Editable meal planner: one card per day, responsive grid */
+.pp-planner {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+.pp-day {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.6rem;
+  padding: 0.75rem 0.85rem;
+  background: var(--md-default-bg-color);
+}
+.md-typeset .pp-day__name {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--md-primary-fg-color);
+}
+.pp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: 0.55rem;
+}
+.pp-field label {
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+}
+.pp-pick {
+  width: 100%;
+  font: inherit;
+  padding: 0.4rem 0.45rem;
+  border-radius: 0.35rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+}
+.md-typeset .pp-day__extras {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  color: var(--md-default-fg-color--light);
+}
+.pp-day__extras span {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.pp-plan-reset { margin-left: auto; }
+
+/* Dynamic grocery category label (not a heading, so it stays out of the TOC) */
+.pp-cat { margin: 1rem 0 0.25rem; }
