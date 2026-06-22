@@ -64,7 +64,8 @@ extra_css:
 
 extra_javascript:
   - assets/js/serving-scaler.js
-  - assets/js/grocery-checklist.js
+  - assets/js/grocery-scope.js
+  - assets/js/meal-plan.js
   - assets/js/pwa.js
 
 nav:

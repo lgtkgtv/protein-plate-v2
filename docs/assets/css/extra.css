@@ -81,3 +81,46 @@
   text-decoration: line-through;
   text-decoration-color: var(--md-default-fg-color--lighter);
 }
+
+/* Grocery scope selector */
+.pp-scope {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 1rem;
+}
+.pp-scope label { font-weight: 600; }
+.pp-scope__select {
+  font: inherit;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  max-width: 100%;
+}
+
+/* Meal-plan duration control (same look as the servings control) */
+.pp-duration {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 0.75rem;
+}
+.pp-duration__label { font-weight: 600; margin-right: 0.3rem; }
+.pp-duration button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background: transparent;
+  color: var(--md-default-fg-color);
+  border-radius: 1rem;
+  padding: 0.15rem 0.85rem;
+}
+.pp-duration button[aria-pressed="true"] {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  border-color: var(--md-primary-fg-color);
+}

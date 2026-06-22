@@ -178,26 +178,93 @@ def render_ingredients_page():
 # --------------------------------------------------------------------------
 # Grocery list page
 # --------------------------------------------------------------------------
-def render_grocery_page():
-    plan = data.meal_plan().get("batches", {})
-    totals, to_taste, notes = aggregate(plan)
-    out = ["# Grocery List", "",
-           "Generated from the [7-day meal plan](meal-plan.md) — one week, "
-           "family of 4. Tick items off as you shop.", ""]
+def _grocery_list_md(counts):
+    """Render one categorised checklist for a given {recipe_id: count} map.
+
+    Category titles are bold paragraphs, not headings, so the many pre-rendered
+    scope lists don't flood the page's table of contents with duplicate anchors.
+    """
+    totals, to_taste, notes = aggregate(counts)
+    lines = []
     for cat, heading in CATEGORY_ORDER:
         rows = [t for t in totals if t["category"] == cat]
         extras = [d for d in to_taste.get(cat, [])
                   if not any(t["display"] == d for t in rows)]
         if not rows and not extras:
             continue
-        out.append(f"## {heading}\n")
+        lines.append(f"**{heading}**\n")
         for t in rows:
             amount = " + ".join(f"{_num(q)} {u}" for q, u in t["amounts"])
             note = f"  *({notes[t['display']]})*" if t["display"] in notes else ""
-            out.append(f"- [ ] {t['display']} — {amount}{note}")
+            lines.append(f"- [ ] {t['display']} — {amount}{note}")
         for d in extras:
             note = f"  *({notes[d]})*" if d in notes else ""
-            out.append(f"- [ ] {d} — to taste / as needed{note}")
+            lines.append(f"- [ ] {d} — to taste / as needed{note}")
+        lines.append("")
+    return "\n".join(lines)
+
+
+def _day_counts(day):
+    counts = {}
+    for slot in ("protein", "cooked_veg", "salad"):
+        if day.get(slot):
+            counts[day[slot]] = counts.get(day[slot], 0) + 1
+    for rid in day.get("extras", []):
+        counts[rid] = counts.get(rid, 0) + 1
+    return counts
+
+
+def render_grocery_page():
+    mp = data.meal_plan()
+    recipes = data.recipes()
+    days = mp.get("days", [])
+    batches = mp.get("batches", {})
+
+    # Build every shopping scope: (value, label, {recipe: count}).
+    scopes = [("week", "Whole week (7 days)", batches)]
+    for d in days:
+        scopes.append((f"day:{d['day']}", d["day"], _day_counts(d)))
+    for i in range(len(days) - 2):                      # 3 consecutive days
+        window = days[i:i + 3]
+        counts = {}
+        for d in window:
+            for rid, n in _day_counts(d).items():
+                counts[rid] = counts.get(rid, 0) + n
+        scopes.append((f"d3:{window[0]['day']}",
+                       f"{window[0]['day']}\u2013{window[2]['day']}", counts))
+    for rid in sorted(recipes, key=lambda r: recipes[r]["name"]):
+        scopes.append((f"meal:{rid}", recipes[rid]["name"], {rid: 1}))
+
+    out = ["# Grocery List", "",
+           "Pick what you're shopping for — the whole week, a single day, a "
+           "3-day stretch, or just one meal — then tick items off as you go. "
+           "Each list is generated from the recipe data, so the amounts always "
+           "match the plates.", ""]
+
+    # Scope selector (progressively enhanced; the week list shows without JS).
+    out.append('<div class="pp-scope" markdown="0">')
+    out.append('  <label for="pp-scope-select">Shopping for</label>')
+    out.append('  <select id="pp-scope-select" class="pp-scope__select">')
+    groups = [("day:", "A single day"), ("d3:", "3 days from"),
+              ("meal:", "A single meal")]
+    out.append('    <option value="week" selected>Whole week (7 days)</option>')
+    for prefix, glabel in groups:
+        out.append(f'    <optgroup label="{glabel}">')
+        for v, lbl, _c in scopes:
+            if v.startswith(prefix):
+                out.append(f'      <option value="{v}">{lbl}</option>')
+        out.append('    </optgroup>')
+    out.append('  </select>')
+    out.append('</div>')
+    out.append("")
+
+    # One pre-rendered list per scope; all hidden except the week.
+    for v, lbl, counts in scopes:
+        hidden = "" if v == "week" else " hidden"
+        out.append(f'<div class="pp-scope-list" data-scope="{v}" markdown="1"{hidden}>')
+        out.append("")
+        out.append(_grocery_list_md(counts))
+        out.append('</div>')
         out.append("")
     return "\n".join(out)
 
@@ -216,7 +283,17 @@ def render_meal_plan_page():
            f"A decision-free week for a family of {plan.get('servings', 4)}. "
            "Each plate = a protein anchor + a cooked veg + a salad + extras. "
            "Generated from the data, so it stays in sync with the recipes and "
-           "the grocery list.", ""]
+           "the grocery list.", "",
+           '<div class="pp-duration" role="group" aria-label="Plan length">',
+           '  <span class="pp-duration__label">Show</span>',
+           '  <button type="button" data-days="1">1 day</button>',
+           '  <button type="button" data-days="3">3 days</button>',
+           '  <button type="button" data-days="7" aria-pressed="true">7 days</button>',
+           '</div>',
+           "",
+           "_Need to shop for just part of the week? The "
+           "[grocery list](grocery-list.md) can be scoped to a single day or "
+           "even a single meal._", ""]
 
     out.append("| Day | Protein anchor | Cooked veg | Salad | Extras |")
     out.append("| --- | --- | --- | --- | --- |")

@@ -184,6 +184,30 @@ storage is wrapped in try/catch so a privacy-locked browser degrades gracefully
 rather than breaking the page. State is per-device (localStorage), which is the
 right scope for a personal shopping list.
 
+## 2.5 Flexible meal-plan & grocery scope
+
+**What changed.** Not everyone cooks a full week at once, so the plan and the
+shopping list are now scopeable:
+
+- The **Meal Plan** page has a *Show 1 / 3 / 7 days* control that trims the plan
+  table to the length you actually want.
+- The **Grocery List** page has a *Shopping for* picker: the whole week, any
+  single day, any 3-day stretch, or **a single meal of your choice** — so you can
+  shop for exactly one dinner if that's all you need. The chosen list's
+  checkboxes and basket count work just as before.
+
+**How it's wired.** Every scope's list is still aggregated in **Python**
+(`grocery.aggregate` already accepts any `{recipe: count}` map), so the amounts
+can never disagree with the recipes — there's no shopping-list maths duplicated
+in JavaScript. `render.py` pre-renders one list per scope inside an
+`md_in_html` `<div data-scope=…>` (using bold category labels, not headings, to
+keep 30-plus lists out of the page's table of contents). `grocery-scope.js` only
+shows the selected list and rebinds the checkbox persistence + toolbar to it (it
+replaces the old `grocery-checklist.js`). The meal-plan control is a small
+row-filter (`meal-plan.js`). The Keto chapter also gained a sourced
+*"how often should you eat?"* section (keto is defined by macros, not meal
+timing; 2–3 meals a day is the recommended norm).
+
 ## 2.4 Installable, offline PWA
 
 **What changed.** ProteinPlate is now a Progressive Web App. On a phone you can
@@ -217,18 +241,57 @@ Application → Manifest / Service Workers, and the install prompt.
 
 ---
 
-# Roadmap / backlog
+# Phase 3 — Backlog plan (sequenced)
 
-In rough priority:
+The remaining work, ordered by **dependencies, importance, usefulness, and how
+approachable each piece is**. Principle: cheap protective guardrails first, then
+the single highest-value feature, then refinements, then the big deferred lift.
 
-1. **Verified macros** — fill the schema's macro slots from USDA FDC / IFCT with a
-   human check.
-2. **Dry→weight grocery conversion** — turn "4½ cup boiled chickpeas" into grams
-   of dry chana using per-ingredient yields.
-3. **No-stub CI guard** — fail the build if any page is a placeholder, so the
-   Phase 1.4 regression can't recur.
-4. **schema.org `Recipe` JSON-LD + i18n** — richer search results and translation
-   readiness.
+| # | Item | Effort | Depends on | Importance | Why here |
+|---|------|--------|-----------|-----------|----------|
+| 3.1 | Guardrails & safety note | Low | — | High | No dependencies, protects the Phase 1.4 fix, and a health caution is overdue. Quick, understandable wins first. |
+| 3.2 | Verified macros | Med–High | schema slots (done) | High | The biggest trust lever and core to the project's promise. |
+| 3.3 | Dry→weight grocery conversion | Med | `units.py`, registry | Medium | Natural extension of unit normalization; finishes the grocery story — do alongside 3.2 while enriching the registry. |
+| 3.4 | Recipe JSON-LD | Low–Med | macros (3.2) | Medium | Richer search results once nutrition exists; fits the generate-from-data pattern. |
+| 3.5 | i18n + units toggle | High | stable everything | Low now / High later | Largest lift; English-only is the current scope, so it's intentionally last. |
+
+## 3.1 Guardrails & safety
+- **No-stub CI guard** — a check that fails the build if any page is a near-empty
+  placeholder, so a page can never silently regress (as in Phase 1.4). A small
+  script wired into the existing validate workflow.
+- **Health-scope note** — a short "who this isn't for" caution (pregnancy, kidney
+  disease, type-1 diabetes, eating-disorder history) on About / Keto. Low effort,
+  high responsibility for a health-adjacent guide.
+- *Done when:* CI rejects a stub page; the caution is live.
+
+## 3.2 Verified macros
+- Source per-ingredient per-100 g values (kcal, protein, carbs, fat) from a cited
+  database — USDA FoodData Central, or IFCT 2017 for Indian foods — into the
+  registry's macro slots; compute per serving; render on each recipe; mark
+  `verified: true` only after a human check. The validator flags missing/unverified.
+- *Why the care:* wrong nutrition on a health site is worse than none — human in
+  the loop, sources cited. (The schema was built for this in Phase 1.)
+- *Done when:* every recipe shows sourced, verified per-serving macros.
+
+## 3.3 Dry→weight grocery conversion
+- Add a per-ingredient yield/density to the registry so cooked-volume amounts
+  ("4½ cup boiled chickpeas") convert to a purchasable weight of the dry good
+  ("~250 g dry chana"). Extends `units.py` and the `purchase_as` mapping — the one
+  refinement left from Phase 2.1.
+- *Done when:* `purchase_as` items show a buyable weight, not a cooked volume.
+
+## 3.4 Recipe JSON-LD
+- Emit `schema.org/Recipe` structured data per recipe from the data (ingredients,
+  steps, image, and nutrition from 3.2), so search engines show rich results —
+  serving the "accessible worldwide" goal through discovery.
+- *Done when:* each recipe page carries valid Recipe JSON-LD.
+
+## 3.5 Internationalisation (deferred)
+- Translation infrastructure (`mkdocs-static-i18n`), parallel content overlays,
+  and a metric/imperial units toggle for non-metric shoppers. Largest change;
+  English-only is the current scope, so this is intentionally last.
+- *Cheap prep meanwhile:* keep user-facing strings clean and avoid baking numbers
+  into prose, so translation stays inexpensive when the time comes.
 
 ---
 
